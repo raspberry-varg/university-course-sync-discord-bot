@@ -23,7 +23,6 @@ class AddMenu extends InteractiveMenu {
             title: '🎉 Welcome to your personal class editor!',
             description: !Array.isArray( classes ) ? classes : null,
             fields: Array.isArray( classes ) ? classes : null,
-            footer: 'This bot is not affiliated with New Mexico State University.',
         });
         console.log("Built AddMenu()");
 

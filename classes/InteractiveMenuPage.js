@@ -40,7 +40,7 @@ class InteractiveMenuPage {
             image: p.body || null,
             timestamp: p.timestamp || null,
             footer: {
-                text: p.footer || null,
+                text: ( p.footer || '' ) + 'This bot is not affiliated with New Mexico State University.',
                 iconURL: p.footerImage || null,
             },
         });
