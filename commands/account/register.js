@@ -29,9 +29,10 @@ module.exports = {
                 .setTitle(`👋 Welcome to ${interaction.client.config.serviceName}, ${interaction.member.displayName}!`)
                 .setDescription(
                     "Let's get you started as soon as possible!\n\n" +
-                    "This service allows for multiple servers across NMSU Discord servers to be fully interconnected, and network with each other by allowing easy assignment of class roles, creation of class chats, and even pushing announcements to all users in a certain class.\n" +
+                    "This service allows for multiple servers across NMSU Discord servers to be fully interconnected, and network with each other by allowing easy assignment of class roles, creation of class chats, and even pushing announcements to all users in a certain class.\n\n" +
                     "This will allow for new or existing servers to provide channels for certain departments, or even all depending on who joins. The bot does all the heavy lifting, all you have to do is declare which classes you are taking this semester, and the bot will take care of the rest!\n\n" +
-                    "By proceeding, you agree to the Privacy Policy listed below, and acknowledge that any content in channels created by this bot are strictly the responsibility of the server owner, this bot only creates said channels but does not monitor them or endorse any content that is sent within."
+                    "By proceeding, you agree to the Privacy Policy listed below, and acknowledge that any content in channels created by this bot are strictly the responsibility of the server owner, this bot only creates said channels but does not monitor them or endorse any content that is sent within.\n\n" +
+                    "If you witness any form of academic misconduct, please be sure to file a report at https://report.nmsu.edu/#sc4."
                 )
                 .addFields({ name: "Semi-Legal Stuff", value: "> [Privacy Policy]()" })
                 .setThumbnail( interaction.user.avatarURL() )
