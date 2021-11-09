@@ -5,10 +5,12 @@ const userSchema = new Schema({
     userId: {
         type: String,
         unique: true,
+        required: true,
     },
     university: {
         type: String,
         lowercase: true,
+        default: 'New Mexico State University',
     },
     joinedBot: {
         type: Date,
@@ -17,13 +19,17 @@ const userSchema = new Schema({
     trustedUsers: {
         type: Map,
         of: String,
+        default: new Set(),
     },
     authServers: {
         type: Map,
         of: String,
+        default: new Set(),
     },
     classes: {
         type: Map,
+        of: [String],
+        default: new Map(),
     },
     staff: {
         type: Boolean,
