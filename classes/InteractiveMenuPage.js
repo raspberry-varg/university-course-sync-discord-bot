@@ -36,14 +36,13 @@ class InteractiveMenuPage {
             color: p.color || null,
             description: p.description || null,
             fields: p.fields ? [...p.fields] : null,
-            thumbnail: p.thumbnail,
             image: p.body || null,
             timestamp: p.timestamp || null,
             footer: {
                 text: ( p.footer || '' ) + 'This bot is not affiliated with New Mexico State University.',
                 iconURL: p.footerImage || null,
             },
-        });
+        }).setThumbnail( p.thumbnail || null );
         
     }
 }
