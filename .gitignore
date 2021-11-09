@@ -1,5 +1,6 @@
 /.env
 /config.json
+/courses
 /logs
 /node_modules
 /package-lock.json
