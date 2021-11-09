@@ -1,5 +1,6 @@
 const { Client, Permissions, Collection, Intents } = require('discord.js');
 const { register } = require('./register');
+const registerCourses = require('./registerCourses');
 const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -33,7 +34,7 @@ for ( dir of commandSubDirectories ) {
         commandFiles.push([ dir, file ]);
 }
 
-// finally, register each command to the client
+// register each command to the client
 for ( file of commandFiles ) {
     let command;
     if ( Array.isArray( file ) )
@@ -48,5 +49,13 @@ register( client )
     .then( success => console.log( success ) )
     .catch( error => console.error("Unable to parse client commands. " + error.stack ) );
 
+
+// register all courses and their id's to client
+registerCourses( client );
+
 // login
 client.login( process.env.CLIENT_TOKEN );
+
+console.log( require('./classes/FormatCourse')('cs273', client.courses) );
+console.log( require('./classes/FormatCourse')('eng273', client.courses) );
+console.log( require('./classes/FormatCourse')('computer science 273', client.courses) );
