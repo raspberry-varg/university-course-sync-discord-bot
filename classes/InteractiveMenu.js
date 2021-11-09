@@ -1,4 +1,4 @@
-const { MessageActionRow } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const InteractiveMenuPage = require('./InteractiveMenuPage');
 
 /**
@@ -29,8 +29,6 @@ class InteractiveMenu {
             menu.deferUpdate();
             return menu.user.id === interaction.user.id;
         }
-        this.buttons = new MessageActionRow();
-        this.selectMenus = new MessageActionRow();
 
     }
 
@@ -61,17 +59,21 @@ class InteractiveMenu {
     /**
      * Display requested page number
      * @protected
-     * @param {number} pageNumber Page to return.
+     * @param {number} pageNumbers Pages to return.
      * @returns {Promise} If page change was successful.
      */
-    async display( pageNumber ) {
+    async display( ...pageNumbers ) {
         
         // human-readable pages 1..n
-        if ( pageNumber < 1 || pageNumber > this.pages.length )
-            throw new Promise.reject("REQUESTED PAGE IS OUT OF BOUNDS: " + ( pageNumber < 1 ? " ( P < 1 )" : ` ( P > ${this.pages.length} )` ) );
-    
-        this.currentPage = pageNumber;
-        return await this.interaction.editReply({ embeds: [ this.pages[ pageNumber - 1 ] ], buttons: [ this.buttons ] });
+        pageNumbers.forEach( i => {
+            if ( i < 1 || i > this.pages.length )
+                throw new Promise.reject("REQUESTED PAGE IS OUT OF BOUNDS: " + ( pageNumbers[0] < 1 ? " ( P < 1 )" : ` ( P > ${this.pages.length} )` ) );
+        });
+
+        return await this.interaction.editReply({
+            embeds: pageNumbers.map( n => new MessageEmbed( this.pages[ n - 1 ] ) ),
+            buttons: [],
+        });
 
     }
 
@@ -101,8 +103,20 @@ class InteractiveMenu {
 
     }
 
-    async close() {
-        return await this.interaction.editReply({ content: 'This menu has been successfully closed, you may now dismiss this menu.' });
+    /**
+     * 
+     * @param {[string]} type Type of closing action.
+     * @returns 
+     */
+    async close( type ) {
+
+        let closeEmbed = new MessageEmbed({ color: this.interaction.client.config.colors.positive });
+        switch ( type ) {
+            case 'time':
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⏰ This menu has run out of time!').setDescription('Please open it once more if you are still not finished by calling the command again!') ], components: [] });
+            default:
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ This menu has been successfully closed.').setFooter('You may now dismiss this menu.') ], components: [] });
+        }
     }
 }
 
