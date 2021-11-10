@@ -37,12 +37,12 @@ module.exports = {
 
         if ( !foundUser.classes ) foundUser.classes = new Map();
 
-        foundServer.any = false;
-        foundServer.courseSpecific.delete( 'cs' );
-        foundServer.courseType.set('cs', 'cs');
-        await foundServer.save();
-        console.log( foundUser.classes );
-        console.log("Starting AddMenu...");
+        // foundServer.any = false;
+        // foundServer.courseSpecific.delete( 'cs' );
+        // foundServer.courseType.set('cs', 'cs');
+        // await foundServer.save();
+        // console.log( foundUser.classes );
+        console.log("Starting ClassesMenu...");
         
         return new ClassesMenu( interaction, foundUser, foundServer ).startPage();
 
