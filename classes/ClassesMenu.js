@@ -3,6 +3,7 @@ const InteractiveMenu = require('./InteractiveMenu');
 const validate = require('../classes/FormatCourse');
 const verifyAllClassesSupport = require('./VerifyAllClassesSupport');
 
+
 class ClassesMenu extends InteractiveMenu {
     
     constructor( interaction, userData, serverData ) {
