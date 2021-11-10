@@ -12,8 +12,15 @@ class InteractiveMenu {
      * @var {[InteractiveMenuPage]} this.pages Array of pages.
      */
     constructor( interaction ) {
-
+        
         this.interaction = interaction;
+        this.closed = false;
+        this.interaction.client.on('interactionCreate', ( i ) => {
+            if ( ( i.user.id === this.interaction.user.id ) && i.isCommand() && !this.closed ) {
+                this.closed = true;
+                return this.close('duplicateMenu');
+            }
+        });
         this.user = interaction.user;
         this.member = interaction.member;
         this.channel = interaction.channel;
@@ -22,6 +29,7 @@ class InteractiveMenu {
         this.currentPage = 1;
         this.messageFilter = ( msg ) => msg.author.id === interaction.user.id;
         this.buttonFilter = ( button ) => {
+            if ( this.closed ) return;
             button.deferUpdate();
             return button.user.id === interaction.user.id;
         }
@@ -110,10 +118,13 @@ class InteractiveMenu {
      */
     async close( type ) {
 
+        this.closed = true;
         let closeEmbed = new MessageEmbed({ color: this.interaction.client.config.colors.positive });
         switch ( type ) {
             case 'time':
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⏰ This menu has run out of time!').setDescription('Please open it once more if you are still not finished by calling the command again!') ], components: [] });
+            case 'duplicateMenu':
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⚠️ A new command has been called!').setDescription('Please refrain from calling other commands while menus are active!') ], components: [] });
             default:
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ This menu has been successfully closed.').setFooter('You may now dismiss this menu.') ], components: [] });
         }
