@@ -34,14 +34,11 @@ class ClassesMenu extends InteractiveMenu {
             components: [ new MessageActionRow({ components: [ new MessageButton( this.buttons.add ), new MessageButton( this.buttons.remove ), new MessageButton( this.buttons.close ) ] }) ],
         });
 
-        let filter = ( button ) => {
-            button.deferUpdate();
-            return button.user.id === this.interaction.user.id;
-        };
+        let filter = this.buttonFilter;
 
         let BCollector = this.interaction.channel.createMessageComponentCollector({ filter, componentType: 'BUTTON', max: 1, time: 20 * 1000 });
         BCollector.on('collect', button => {
-
+            
             // BCollector.stop();
             switch( button.customId ) {
                 case 'class_add':
@@ -69,7 +66,11 @@ class ClassesMenu extends InteractiveMenu {
         let classes = verifyAllClassesSupport( this.interaction, this.dbUser, this.dbServer );
 
         this.pages[0] = new MessageEmbed( this.pages[0] )
-            .setDescription(( !Array.isArray( classes ) ? classes + '\n' : 'Amet ullamco voluptate non ullamco labore labore qui eu id quis magna. Minim nulla amet aliqua culpa voluptate aliquip velit incididunt. Lorem laboris nostrud Lorem incididunt enim adipisicing nulla duis consectetur. Veniam ut cupidatat tempor duis fugiat dolor excepteur. Dolore nisi ipsum anim deserunt velit ullamco velit.') )
+            .setDescription((
+                ( !Array.isArray( classes ) ? classes + '\n' : '' ) +
+                'Home to all your classes for the Fall 2021 Semester!\n' +
+                'Simply click `Add` or `Remove` below to add or remove classes respectively!'
+            ))
             .setFields( Array.isArray( classes ) ? classes : [] );
 
     }
