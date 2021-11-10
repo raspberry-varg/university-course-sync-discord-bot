@@ -40,7 +40,7 @@ function verifyAllClassesSupport( interaction, userData, serverData ) {
                 if ( quickCheck( key, value, serverData ) )
                     return `৹ **${key.toUpperCase()}** ${value} ${interaction.client.courses.get(key).get(value).name}`;
                 else
-                    return `৹ ~~${key.toUpperCase()} ${value} ${interaction.client.courses.get(key).get(value).name}~~`;
+                    return `✕ ~~${key.toUpperCase()} ${value} ${interaction.client.courses.get(key).get(value).name}~~`;
                 
             });
 
@@ -59,8 +59,12 @@ function verifyAllClassesSupport( interaction, userData, serverData ) {
 
 function quickCheck( key, value, serverData ) {
     
+    // check if any is enabled
+    if ( serverData.any )
+        return true;
+    
     // check blacklist
-    if ( serverData.courseBlacklist.has( key ) && serverData.courseBlacklist.get( key ).has( value ) )
+    if ( serverData.courseBlacklist.has( key ) && serverData.courseBlacklist.get( key ).includes( value ) )
         return false;
     
     // check course specific type
