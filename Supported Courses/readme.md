@@ -4,7 +4,7 @@
 
 ## ✏️ Let's get you right where you need to go!
 
-> The following are the current classes that are supported under **Course Sync**! To make a request for a certain class, please send a request <s>here</s>(currently unavailable)
+> The following are the current classes that are supported under **Course Sync**! To make a request for a certain class, please send a request <s>here</s>[(currently unavailable)]()
 
 - [Computer Science](https://github.com/robertvargas-irq/university-course-sync-discord-bot/blob/master/Supported%20Courses/CS.md)
 - [English](https://github.com/robertvargas-irq/university-course-sync-discord-bot/blob/master/Supported%20Courses/ENGL.md)
