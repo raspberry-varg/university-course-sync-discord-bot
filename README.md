@@ -1,5 +1,6 @@
 ---
-<img src="https://media.discordapp.net/attachments/907157942594314251/907159920305135646/Concept_Bot_Logo_Banner_Full.png?width=1920&height=480" alt="Main Banner"></img>
+![Concept Bot Logo Banner Full](https://user-images.githubusercontent.com/90274287/142587875-d1dbcc33-ef6b-4023-af56-9cc67f2c6b55.png)
+
 ### 🔁 **Course Sync**
 Welcome to Course Sync, an all-in-one solution for a growing student Discord server population.
 
@@ -20,14 +21,14 @@ With Course Sync, you won't need to struggle with non-functioning reaction roles
 > - Set it and forget it
 > - An ever-expanding list of supported classes
 > 
-> ![image](https://user-images.githubusercontent.com/90274287/142586023-8671f73d-87e4-414e-88dc-62ca23f4d52e.png)
+> ![User Class Interface](https://user-images.githubusercontent.com/90274287/142586023-8671f73d-87e4-414e-88dc-62ca23f4d52e.png)
 
 ## ⚙️ Administrators set the classes, the bot will take care of the rest!
 > - Maintenance
 > - Channel & Role Creation
 > - Role Giving
 > 
-> ![image](https://user-images.githubusercontent.com/90274287/142586114-d93eb8b3-96d0-42b8-9042-f5ec86d98daa.png)
+> ![Server Dashboard Interface](https://user-images.githubusercontent.com/90274287/142586114-d93eb8b3-96d0-42b8-9042-f5ec86d98daa.png)
 
 ## 🍵 Let's simplify.
 > ~~Bot Invite link~~ [<sub>(coming soon)</sub>]()
