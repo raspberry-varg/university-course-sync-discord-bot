@@ -4,11 +4,11 @@
 
 ## 🔀 The following are the current subjects that are supported under **Course Sync**!
 
-- 🖱️ [Computer Science](./CS.md)
+- ### 🖱️ [Computer Science](./CS.md)
 
-- 📖 [English](./ENGL.md)
+- ### 📖 [English](./ENGL.md)
 
-- 🔭 [Astronomy](./ASTR.md)
+- ### 🔭 [Astronomy](./ASTR.md)
 
 <br><br><br><br><br><br><br><br><br><br>
 
