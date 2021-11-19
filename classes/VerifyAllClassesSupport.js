@@ -1,18 +1,16 @@
 const Discord = require("discord.js");
-const { Mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 /**
  * Verify that the server allows this course.
  * @param {Array<String>} courseSplit
- * @param {Mongoose.module} serverData 
+ * @param {mongoose.module} serverData 
  * @returns {Discord.MessageEmbed.fields} Formatted fields.
  */
 function verifyAllClassesSupport( interaction, userData, serverData ) {
 
     if ( !userData.classes || userData.classes.size < 1 )
-        return "> **Woah!** You are currently not in any classes!\n" +
-        "> __**[Check out the currently supported list of classes here](https://github.com/robertvargas-irq/university-course-sync-discord-bot/blob/master/Supported%20Courses/readme.md)**__,\n" +
-        "> then started by clicking/tapping '`Add`' below!\n";
+        return false;
     
 
 
@@ -26,7 +24,7 @@ function verifyAllClassesSupport( interaction, userData, serverData ) {
         for ( const key of userData.classes.keys() ) {
             classes.push({
                 name: key.toUpperCase() + "\n=======\n",
-                value: userData.classes.get( key ).map( ( value ) => `৹ **${key.toUpperCase()}** ${value} ${interaction.client.courses.get(key).get(value).name}`).join('\n'),
+                value: userData.classes.get( key ).map( ( value ) => `> ৹ **${key.toUpperCase()}** ${value} ${interaction.client.courses.get(key).get(value).name}`).join('\n'),
                 inline: true,
             });
             userData.classes.get( key ).forEach( value => console.log( interaction.client.courses.get(key).get(value) ) );
@@ -38,9 +36,9 @@ function verifyAllClassesSupport( interaction, userData, serverData ) {
             let courseBloc = userData.classes.get( key ).map( ( value ) => {
                 
                 if ( quickCheck( key, value, serverData ) )
-                    return `৹ **${key.toUpperCase()}** ${value} ${interaction.client.courses.get(key).get(value).name}`;
+                    return `> ৹ **${key.toUpperCase()}** ${value} ${interaction.client.courses.get(key).get(value).name}`;
                 else
-                    return `✕ ~~${key.toUpperCase()} ${value} ${interaction.client.courses.get(key).get(value).name}~~`;
+                    return `> ✕ ~~${key.toUpperCase()} ${value} ${interaction.client.courses.get(key).get(value).name}~~`;
                 
             });
 
