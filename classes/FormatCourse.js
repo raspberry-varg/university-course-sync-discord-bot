@@ -12,8 +12,8 @@ function validateInput( input, courses ) {
     const split = input.split(/(\d+)/, 2);
 
     // trim word-input
-    split[0] = split[0].trim().replace(/ +/, ' ');
-    split[1] = split[1].trim();
+    split[0] = split[0]?.trim()?.replace(/ +/, ' ') || '';
+    split[1] = split[1]?.trim() || '';
 
     // validate
     let courseSearch = courses.get( split[0] );
