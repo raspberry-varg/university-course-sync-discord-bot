@@ -8,9 +8,9 @@ Welcome to Course Sync, an all-in-one solution for a growing student Discord ser
 
 ## ✏️ Set it, and forget it
 
-This bot is fully-equipped with auto course-sync capabilities, allowing you to declare which classes you are in, and it will seamlessly sync across every server that utilizes this bot.
-
 With Course Sync, you won't need to struggle with non-functioning reaction roles or updating them every time you join new server. Input your courses, and we'll do the rest :tea:
+
+This bot is fully-equipped with auto course-sync capabilities, allowing you to declare your classes, and it will seamlessly sync them across every server that utilizes this bot. With easy-to-use menus, and a simple user-friendly interface, Course Sync allows for easy setup, both on the student's side and the community manager.
 
 ### 📚 [ [Currently Supported Classes](./Supported%20Courses/readme.md) ]
 
