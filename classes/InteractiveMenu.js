@@ -15,12 +15,17 @@ class InteractiveMenu {
         
         this.interaction = interaction;
         this.closed = false;
-        this.interaction.client.on('interactionCreate', ( i ) => {
-            if ( ( i.user.id === this.interaction.user.id ) && i.isCommand() && !this.closed ) {
-                this.closed = true;
-                return this.close('duplicateMenu');
-            }
-        });
+        this.checkCommands = () => {
+            interaction.client.once('interactionCreate', ( i ) => {
+                if ( ( i.user.id === this.interaction.user.id ) && i.isCommand() && !this.closed ) {
+                    this.closed = true;
+                    return this.close('duplicateMenu');
+                }
+                else
+                    this.checkCommands();
+            });
+        }
+        this.checkCommands();
         this.user = interaction.user;
         this.member = interaction.member;
         this.channel = interaction.channel;
@@ -46,6 +51,7 @@ class InteractiveMenu {
      */
     addPage( pageInfo ) {
 
+        pageInfo.footerImage = pageInfo.footerImage || this.interaction.client.user.avatarURL();
         return this.pages[ this.pages.length ] = new InteractiveMenuPage( pageInfo );
 
     }
@@ -117,7 +123,7 @@ class InteractiveMenu {
      * @returns 
      */
     async close( type ) {
-
+        
         this.closed = true;
         let closeEmbed = new MessageEmbed({ color: this.interaction.client.config.colors.positive });
         switch ( type ) {
@@ -125,6 +131,8 @@ class InteractiveMenu {
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⏰ This menu has run out of time!').setDescription('Please open it once more if you are still not finished by calling the command again!') ], components: [] });
             case 'duplicateMenu':
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⚠️ A new command has been called!').setDescription('Please refrain from calling other commands while menus are active!') ], components: [] });
+            case 'refresh':
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ Refresh complete.').setFooter('You may now dismiss this menu.') ], components: [] });
             default:
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ This menu has been successfully closed.').setFooter('You may now dismiss this menu.') ], components: [] });
         }
