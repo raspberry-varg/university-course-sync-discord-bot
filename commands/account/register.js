@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
+const { userSchema } = require('../../database/schemas/user');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
     name: 'register',
     description: `Start using ${require('../../config.json').serviceName}!`,
-    guilds: ['903924793542311947'],
+    guilds: ['903924793542311947', '910745675006877757'],
     global: false,
     async execute( interaction ) {
         await interaction.deferReply({ ephemeral: true });
         var embed = new MessageEmbed({ color: interaction.client.config.colors.positive });
 
         // search for user in the database
-        const User = mongoose.model('User', require('../../database/schemas/user').userSchema );
+        const User = mongoose.model('User', userSchema );
         const found = await User.findOne({ userId: interaction.user.id }).exec();
 
         // if a user is found, notify of registration, else prompt with registration
@@ -36,7 +37,7 @@ module.exports = {
                 )
                 .addFields({ name: "Semi-Legal Stuff", value: "> [Privacy Policy]()" })
                 .setThumbnail( interaction.user.avatarURL() )
-                .setFooter("This bot is NOT affiliated with New Mexico State University in any way, shape, or form, and never claims to be.")
+                .setFooter("This bot is not affiliated with New Mexico State University.")
             const buttons = [
                 new MessageButton()
                     .setLabel('Sign me up!')
@@ -55,21 +56,21 @@ module.exports = {
                 button.deferUpdate();
                 return button.user.id === interaction.user.id, button.channel.id === interaction.channel.id;
             };
-            interaction.channel.awaitMessageComponent({ filter, componentType: 'BUTTON', time: 60 * 1000, errors: [ 'TIME' ] })
+            interaction.channel.awaitMessageComponent({ filter: filter, componentType: 'BUTTON', time: 60 * 1000, errors: [ 'TIME' ] })
                 .then( collected => {
                     // parse accept or reject
                     switch ( collected.customId ) {
                         case 'accept':
 
                             // create user info in database
-                            const doc = new User({ userId: interaction.user.id });
+                            const doc = new User({ userId: interaction.user.id, cachedServers: [ interaction.guild.id ] });
                             doc.save()
                                 .then( console.log('Success!') )
                                 .catch( e => console.error( e.stack ) );
                             
                             embed
                                 .setTitle("You're all set!")
-                                .setDescription("Welcome to the bot! To start declaring your classes, start by typing `/class add`!\nYou may now dismiss this menu.")
+                                .setDescription("Welcome to the bot! To start declaring your classes, start by typing `/class` to pull up the class menu!\nYou may now dismiss this menu.")
                             return interaction.editReply({ embeds: [ embed ], components: [] });
                         case 'reject':
                             embed = new MessageEmbed({ color: interaction.client.config.colors.positive })

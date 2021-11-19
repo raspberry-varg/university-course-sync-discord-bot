@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const { userSchema } = require('../../database/schemas/user');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
     name: 'deactivate',
     description: `Deactivate your account, and entirely erase your data from ${require('../../config.json').serviceName}! (This is irreversable)`,
-    guilds: ['903924793542311947'],
+    guilds: ['903924793542311947', '910745675006877757'],
     global: false,
     async execute( interaction ) {
         
@@ -12,8 +13,8 @@ module.exports = {
         var embed = new MessageEmbed({ color: interaction.client.config.colors.positive });
 
         // search for user in the database
-        const User = mongoose.model('User', require('../../database/schemas/user').userSchema );
-        const found = await User.findOne({ userId: interaction.user.id }).exec();
+        const User = mongoose.model('User', userSchema );
+        const foundUser = await User.findOne({ userId: interaction.user.id }).exec();
 
         // if no user is found, prompt with registration
         if ( !foundUser ) {
@@ -50,7 +51,7 @@ module.exports = {
             button.deferUpdate();
             return button.user.id === interaction.user.id, button.channel.id === interaction.channel.id;
         };
-        interaction.channel.awaitMessageComponent({ filter, componentType: 'BUTTON', time: 60 * 1000, errors: [ 'TIME' ] })
+        interaction.channel.awaitMessageComponent({ filter: filter, componentType: 'BUTTON', time: 60 * 1000, errors: [ 'TIME' ] })
             .then( async collected => {
                 // parse accept or reject
                 switch ( collected.customId ) {
