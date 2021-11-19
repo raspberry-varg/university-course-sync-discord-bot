@@ -7,12 +7,16 @@ const { Mongoose } = require("mongoose");
  */
 function verifyClassSupport( courseSplit, serverData ) {
 
+    // if any return true
+    if ( serverData.any )
+        return true;
+    
     // check blacklist
-    if ( serverData.courseBlacklist.has( courseSplit[0] ) && serverData.courseBlacklist.get( courseSplit[0] ).has( courseSplit[1] ) )
+    if ( serverData.courseBlacklist.has( courseSplit[0] ) && serverData.courseBlacklist.get( courseSplit[0] ).includes( courseSplit[1] ) )
         return false;
     
     // check course specific type
-    if ( serverData.courseSpecific.has( courseSplit[0] ) && serverData.courseSpecific.get( courseSplit[0] ).contains( courseSplit[1] ) )
+    if ( serverData.courseSpecific.has( courseSplit[0] ) && serverData.courseSpecific.get( courseSplit[0] ).includes( courseSplit[1] ) )
         return true;
     
     // else check course global type as specific overrides
