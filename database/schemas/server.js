@@ -9,7 +9,7 @@ const serverSchema = new Schema({
     },
     any: {
         type: Boolean,
-        default: false,
+        default: 'false',
     },
     courseSpecific: {
         type: Map,
@@ -24,7 +24,33 @@ const serverSchema = new Schema({
         type: Map,
         of: [String],
         default: new Map(),
-    }
+    },
+    courseParents : {              // this is such a horrible way to handle channels but it's the best I've got right now.
+        type: Map,
+        of: String,
+        default: new Map(),
+    },
+    courseData: {
+        type: Map,
+        of: {
+            type: Map,
+            of: {
+                type: {},
+                default: {
+                    roleId: '-1',
+                    channelId: '-1',
+                },
+            },
+            default: new Map(),
+        },
+        default: new Map(),
+    },
+    /*
+     * courseData.key.value: {
+     *     roleId: String,
+     *     channelId: String,
+     * }
+     */
 });
 
 module.exports = serverSchema;
