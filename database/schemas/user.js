@@ -21,15 +21,18 @@ const userSchema = new Schema({
         of: String,
         default: new Set(),
     },
-    authServers: {
-        type: Map,
-        of: String,
-        default: new Set(),
+    cachedServers: {
+        type: [String],
+        default: [],
     },
     classes: {
         type: Map,
         of: [String],
         default: new Map(),
+    },
+    classesCount: {
+        type: Number,
+        default: 0,
     },
     staff: {
         type: Boolean,
