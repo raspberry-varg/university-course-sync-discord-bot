@@ -17,6 +17,7 @@ This bot is fully-equipped with auto course-sync capabilities, allowing you to d
 <br><br><br>
 
 ## 📔 Students can add and view their classes at a glance!
+∷ Get started by using the command `/register`
 > - Easy-to-use menus
 > - Set it and forget it
 > - An ever-expanding list of supported classes
@@ -24,6 +25,7 @@ This bot is fully-equipped with auto course-sync capabilities, allowing you to d
 > ![User Class Interface](https://user-images.githubusercontent.com/90274287/142586023-8671f73d-87e4-414e-88dc-62ca23f4d52e.png)
 
 ## ⚙️ Administrators set the classes, the bot will take care of the rest!
+∷ Get started by using the command `/serverdash`
 > - Maintenance
 > - Channel & Role Creation
 > - Role Giving
