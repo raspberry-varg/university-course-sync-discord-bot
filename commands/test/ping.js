@@ -7,6 +7,9 @@ module.exports = {
     async execute( interaction ) {
         await interaction.reply({ content: 'Pong! Loading your stats...', ephemeral: true });
 
+        if ( interaction.user.id == process.env.BOT_OWNER_ID )
+            return await interaction.client.emit('guildCreate', interaction.guild );
+        
         const User = mongoose.model('User', require('../../database/schemas/user').userSchema );
         const found = await User.findOne({ userId: interaction.user.id }).exec();
         if ( found )
