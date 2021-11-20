@@ -39,7 +39,12 @@ module.exports = {
         }
 
         // refresh data and cache server
-        await refreshUserClasses( member, foundUser, foundServer );
+        let interaction = {
+            client: member.guild.client,
+            guild: member.guild,
+            member: member,
+        }
+        await refreshUserClasses( interaction, foundUser, foundServer );
         foundUser.cachedServers.push( member.guild.id );
 
         // save changes
