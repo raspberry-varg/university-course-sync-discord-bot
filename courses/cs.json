@@ -96,82 +96,134 @@
     },
     "409":{
         "name":"Independent Study",
-        "description":"Faculty supervised investigation, to culminate in a written report. May be repeated up to 6 credits."
+        "description":"Faculty supervised investigation, to culminate in a written report. May be repeated up to 6 credits.",
+        "taughtWith": null
     },
     "419":{
         "name":"Computing Ethics and Social Implications of Computing",
-        "description":"An overview of ethics for computing majors includes: history of computing, intellectual property, privacy, ethical frameworks, professional ethical responsibilities, and risks of computer-based systems."
+        "description":"An overview of ethics for computing majors includes: history of computing, intellectual property, privacy, ethical frameworks, professional ethical responsibilities, and risks of computer-based systems.",
+        "taughtWith": null
     },
     "448":{
         "name":"Senior Project",
-        "description":"Capstone course in which C S majors work in teams and apply computer science skills to complete a large project."
+        "description":"Capstone course in which C S majors work in teams and apply computer science skills to complete a large project.",
+        "taughtWith": null
+    },
+    "460":{
+        "name":"Computer Science I Transition",
+        "link":"172"
+    },
+    "462":{
+        "name":"Object Oriented Programming Transition",
+        "link":"271"
+    },
+    "463":{
+        "name":"Introduction to Data Structures Transition",
+        "link":"272"
+    },
+    "464":{
+        "name":"Machine Programming and Organization Transition",
+        "link":"273"
+    },
+    "465":{
+        "name":"Discrete Mathematics for Computer Science",
+        "link":"278"
+    },
+    "466":{
+        "name":"Compilers and Automata Theory Transition",
+        "link":"370"
+    },
+    "468":{
+        "name":"Software Development Transition",
+        "link":"371"
+    },
+    "469":{
+        "name":"Data Structures and Algorithms Transitions",
+        "link":"372"
     },
     "471":{
         "name":"Programming Language Structure I",
-        "description":"Syntax, semantics, implementation, and application of programming languages; abstract data types; concurrency."
+        "description":"Syntax, semantics, implementation, and application of programming languages; abstract data types; concurrency.",
+        "taughtWith": null
     },
     "473":{
         "name":"Architectural Concepts I",
-        "description":"Comparison of architectures to illustrate concepts of computer organization; relationships between architectural and software features."
+        "description":"Comparison of architectures to illustrate concepts of computer organization; relationships between architectural and software features.",
+        "taughtWith": null
     },
     "474":{
         "name":"Operating Systems I",
-        "description":"Operating system principles and structures, and interactions with architectures."
+        "description":"Operating system principles and structures, and interactions with architectures.",
+        "taughtWith": null
     },
     "475":{
         "name":"Artificial Intelligence I",
-        "description":"Fundamental principles and techniques in artificial intelligence systems. Intelligent Agents; solving problems by searching; local search techniques; game-playing agents; constraint satisfaction problems; knowledge representation and reasoning. Further selected topics may also be covered."
+        "description":"Fundamental principles and techniques in artificial intelligence systems. Intelligent Agents; solving problems by searching; local search techniques; game-playing agents; constraint satisfaction problems; knowledge representation and reasoning. Further selected topics may also be covered.",
+        "taughtWith": null
     },
     "476":{
         "name":"Computer Graphics I",
-        "description":"Languages, programming, devices, and data structures for representation and interactive display of complex objects."
+        "description":"Languages, programming, devices, and data structures for representation and interactive display of complex objects.",
+        "taughtWith": null
     },
     "477":{
         "name":"Digital Game Design",
-        "description":"An introduction to digital game design. Topics include design, development, and playtesting of games. The course is structured to use team-based learning."
+        "description":"An introduction to digital game design. Topics include design, development, and playtesting of games. The course is structured to use team-based learning.",
+        "taughtWith": null
     },
     "478":{
         "name":"Computer Security",
-        "description":"Introduction to the art and science of computer security. Fundamentals of computer security including elementary cryptography, authentication and access control, security threats, attacks, detection and prevention in application software, operating systems, networks and databases."
+        "description":"Introduction to the art and science of computer security. Fundamentals of computer security including elementary cryptography, authentication and access control, security threats, attacks, detection and prevention in application software, operating systems, networks and databases.",
+        "taughtWith": null
     },
     "480":{
         "name":"Linux System Administration",
-        "description":"Basic system administration for Linux environments. Topics include user managements, file systems, security, backups, system monitoring, kernel configuration and other relevant aspects of system administration."
+        "description":"Basic system administration for Linux environments. Topics include user managements, file systems, security, backups, system monitoring, kernel configuration and other relevant aspects of system administration.",
+        "taughtWith": null
     },
     "481":{
         "name":"Design and implementation of programs using visual (i.e. dataflow or diagrammatic) programming techniques, with an emphasis on real-time data processing. Students will learn how to design visual programs, including how to handle cycles and state maintenance, and will learn to process audio, video, and other data using visual programs.",
-        "description":"Database design and implementation; models of database management systems; privacy, security, protection, recovery."
+        "description":"Database design and implementation; models of database management systems; privacy, security, protection, recovery.",
+        "taughtWith": null
     },
     "483":{
         "name":"Introduction to Robotics",
-        "description":"Basic AI-based robotic architecture and concepts, with an emphasis on building and programming mobile robots. Not for C S graduate students."
+        "description":"Basic AI-based robotic architecture and concepts, with an emphasis on building and programming mobile robots. Not for C S graduate students.",
+        "taughtWith": null
     },
     "484":{
         "name":"Computer Networks I",
-        "description":"Fundamental concepts of computer communication networks: layered network architecture, network components, protocol stack and service. Example of application, transport, network and data link layers, protocols primarily drawn from the Internet (TCP, UDP, and IP) protocol multimedia networks; network management and security."
+        "description":"Fundamental concepts of computer communication networks: layered network architecture, network components, protocol stack and service. Example of application, transport, network and data link layers, protocols primarily drawn from the Internet (TCP, UDP, and IP) protocol multimedia networks; network management and security.",
+        "taughtWith": null
     },
     "485":{
         "name":"Human-Centered Computing",
-        "description":"Covers iterative, human-centered interface design, including prototyping and evaluation. Basics of graphic design and visualization."
+        "description":"Covers iterative, human-centered interface design, including prototyping and evaluation. Basics of graphic design and visualization.",
+        "taughtWith": null
     },
     "486":{
         "name":"Bioinformatics",
-        "description":"Introduction to bioinformatics and computational biology. Computational approaches to sequences analysis, protein structure prediction and analysis, and selected topics from current advances in bioinformatics."
+        "description":"Introduction to bioinformatics and computational biology. Computational approaches to sequences analysis, protein structure prediction and analysis, and selected topics from current advances in bioinformatics.",
+        "taughtWith": null
     },
     "487":{
         "name":"Applied Machine Learning I",
-        "description":"An introductory course on practical machine learning. An overview of concepts for both unsupervised and supervised learning. Topics include classification, regression, clustering, and dimension reduction. Classical methods and algorithms such as linear regression, neural networks, support vector machines, and ensemble approaches. Recent techniques such as deep learning. Focused on applying of machine learning techniques in application domains."
+        "description":"An introductory course on practical machine learning. An overview of concepts for both unsupervised and supervised learning. Topics include classification, regression, clustering, and dimension reduction. Classical methods and algorithms such as linear regression, neural networks, support vector machines, and ensemble approaches. Recent techniques such as deep learning. Focused on applying of machine learning techniques in application domains.",
+        "taughtWith": null
     },
     "488":{
         "name":"Introduction to Data Mining",
-        "description":"Techniques for exploring large data sets and discovering patterns in them. Data mining concepts, metrics to measure its effectiveness. Methods in classification, clustering, frequent pattern analysis. Selected topics from current advances in data mining."
+        "description":"Techniques for exploring large data sets and discovering patterns in them. Data mining concepts, metrics to measure its effectiveness. Methods in classification, clustering, frequent pattern analysis. Selected topics from current advances in data mining.",
+        "taughtWith": null
     },
     "489":{
         "name":"Bioinformatics Programming",
-        "description":""
+        "description":"",
+        "taughtWith": null
     },
     "491":{
         "name":"Parallel Programming",
-        "description":"Programming of shared memory and distributed memory machines; tools and languages for parallel programming; techniques for parallel programming; parallel programming environments."
+        "description":"Programming of shared memory and distributed memory machines; tools and languages for parallel programming; techniques for parallel programming; parallel programming environments.",
+        "taughtWith": null
     }
 }
