@@ -1,0 +1,177 @@
+{
+    "111":{
+        "name":"Computer Science Principles",
+        "description":"This course provides a broad and exciting introduction to the field of computer science and the impact that computation has today on every aspect of life. It focuses on exploring computing as a creative activity and investigates the key foundations of computing: abstraction, data, algorithms, and programming. It looks into how connectivity and the Internet have revolutionized computing and demonstrates the global impact that computing has achieved, and it reveals how a new student in computer science might become part of the computing future.",
+        "taughtWith":null
+    },
+    "151":{
+        "name":"C++ Programming",
+        "description":"Introduction to object-oriented programming in the C++ language. The focus will be on preparing students to use C++ in their own areas.",
+        "taughtWith":null
+    },
+    "152":{
+        "name":"Java Programming",
+        "description":"Programming in the Java language.",
+        "taughtWith":null
+    },
+    "153":{
+        "name":"Python Programming I",
+        "description":"This course is an introduction to programming in the Python language, covering fundamental scripts, data types and variables, functions, and simple object creation and usage. The focus will be on preparing students to use Python in their own areas.",
+        "taughtWith":null
+    },
+    "154":{
+        "name":"Python Programming II",
+        "description":"This course covers advanced Python programming, including classes, objects, and inheritance, embedded programming in domain applications, database interaction, and advanced data and text processing. The focus will be on preparing students to use Python in their own areas.",
+        "taughtWith":null
+    },
+    "157":{
+        "name":"Topics in Software Programming and Applications",
+        "description":"Current topics in computer programming and software applications. Topic announced in the Schedule of Classes.",
+        "taughtWith":null
+    },
+    "158":{
+        "name":"R Programming I",
+        "description":"This course is an introduction to data processing in the R language, covering fundamental script configuration, data types and data collections, R control structures, and basic creation of graphs and data visualizations. This course will not focus on the statistical capabilities of R, though some basic statistical computations will be used.",
+        "taughtWith":null
+    },
+    "171":{
+        "name":"Introduction to Computer Science",
+        "description":"Computers are now used widely in all area of modern life. This course provides understanding of the theoretical and practical foundations for how computers work, and provides practical application and programming experience in using computers to solve problems efficiently and effectively. The course covers broad aspects of the hardware, software, and mathematical basis of computers. Weekly labs stress using computers to investigate and report on data-intensive scientific problems. Practical experience in major software applications includes an introduction to programming, word processing, spreadsheets, databases, presentations, and Internet applications.",
+        "taughtWith":null
+    },
+    "172":{
+        "name":"Computer Science I",
+        "description":"Computational problem solving; problem analysis; implementation of algorithms using Java. Object-oriented concepts, arrays, searching, sorting, and recursion.",
+        "taughtWith":["cs460"]
+    },
+    "271":{
+        "name":"Object Oriented Programming",
+        "description":"Introduction to problem analysis and problem solving in the object-oriented paradigm. Practical introduction to implementing solutions in the C++ language. Pointers and dynamic memory allocation. Hands-on experience with useful development tools.",
+        "taughtWith":["cs462"]
+    },
+    "272":{
+        "name":"Introduction to Data Structures",
+        "description":"Design, implementation, use of fundamental abstract data types and their algorithms: lists, stacks, queues, deques, trees; imperative and declarative programming. Internal sorting; time and space efficiency of algorithms.",
+        "taughtWith":["cs463"]
+    },
+    "273":{
+        "name":"Machine Programming and Organization",
+        "description":"Computer structure, instruction execution, addressing techniques; programming in machine and assembly languages.",
+        "taughtWith":["cs464"]
+    },
+    "278":{
+        "name":"Discrete Mathematics for Computer Science",
+        "description":"Discrete mathematics required for Computer Science, including the basics of logic, number theory, methods of proof, sequences, mathematical induction, set theory, counting, and functions.",
+        "taughtWith":["cs465"]
+    },
+    "343":{
+        "name":"Algorithm Design & Implementation",
+        "description":"Introduction to efficient data structure and algorithm design. Basic graph algorithms. Balanced search trees. Classic algorithm design paradigms: divide-and-conquer, greedy scheme, and dynamic programming.",
+        "taughtWith":["cs493"]
+    },
+    "370":{
+        "name":"Compilers and Automata Theory",
+        "description":"Methods, principles, and tools for programming language processor design; basics of formal language theory (finite automata, regular expressions, context-free grammars); development of compiler components.",
+        "taughtWith":["cs466"]
+    },
+    "371":{
+        "name":"Software Development",
+        "description":"Software specification, design, testing, maintenance, documentation; informal proof methods; team implementation of a large project.",
+        "taughtWith":["cs468"]
+    },
+    "372":{
+        "name":"Data Structures and Algorithms",
+        "description":"Introduction to efficient data structure and algorithm design. Order notation and asymptotic run-time of algorithms. Recurrence relations and solutions. Abstract data type dynamic set and red-black trees. Classic algorithm design paradigms: divide-and-conquer, dynamic programming, greedy algorithms.",
+        "taughtWith":["cs469"]
+    },
+    "380":{
+        "name":"Introduction to Cryptography",
+        "description":"The course covers basic cryptographic primitives, such as symmetric, public-key ciphers, digital signature schemes, and hash functions, and their mathematical underpinnings. Course helps students understand basic notions of security in a cryptographic sense: chosen plaintext and chosen ciphertext attacks, games, and reductions. Course also covers computational number theory relevant to cryptography.",
+        "taughtWith":["cs525"]
+    },
+    "382":{
+        "name":"Modern Web Technologies",
+        "description":"In this course, we will take a full-stack approach to modern web application design. We will start with the fundamentals including HTML5, CSS3, Javascript, JSON, and the underlying networking concepts and protocols driving the modern web. We will then move on to more advanced topics including javascript backend development with Node.js, NoSQL database design with MongoDB, cloud computing, and re-sponsive web design. Finally, we cover advanced topics including the design and im- plementation of browser extensions and real-time web technologies like WebRTC and WebSockets.",
+        "taughtWith":["cs532"]
+    },
+    "409":{
+        "name":"Independent Study",
+        "description":"Faculty supervised investigation, to culminate in a written report. May be repeated up to 6 credits."
+    },
+    "419":{
+        "name":"Computing Ethics and Social Implications of Computing",
+        "description":"An overview of ethics for computing majors includes: history of computing, intellectual property, privacy, ethical frameworks, professional ethical responsibilities, and risks of computer-based systems."
+    },
+    "448":{
+        "name":"Senior Project",
+        "description":"Capstone course in which C S majors work in teams and apply computer science skills to complete a large project."
+    },
+    "471":{
+        "name":"Programming Language Structure I",
+        "description":"Syntax, semantics, implementation, and application of programming languages; abstract data types; concurrency."
+    },
+    "473":{
+        "name":"Architectural Concepts I",
+        "description":"Comparison of architectures to illustrate concepts of computer organization; relationships between architectural and software features."
+    },
+    "474":{
+        "name":"Operating Systems I",
+        "description":"Operating system principles and structures, and interactions with architectures."
+    },
+    "475":{
+        "name":"Artificial Intelligence I",
+        "description":"Fundamental principles and techniques in artificial intelligence systems. Intelligent Agents; solving problems by searching; local search techniques; game-playing agents; constraint satisfaction problems; knowledge representation and reasoning. Further selected topics may also be covered."
+    },
+    "476":{
+        "name":"Computer Graphics I",
+        "description":"Languages, programming, devices, and data structures for representation and interactive display of complex objects."
+    },
+    "477":{
+        "name":"Digital Game Design",
+        "description":"An introduction to digital game design. Topics include design, development, and playtesting of games. The course is structured to use team-based learning."
+    },
+    "478":{
+        "name":"Computer Security",
+        "description":"Introduction to the art and science of computer security. Fundamentals of computer security including elementary cryptography, authentication and access control, security threats, attacks, detection and prevention in application software, operating systems, networks and databases."
+    },
+    "480":{
+        "name":"Linux System Administration",
+        "description":"Basic system administration for Linux environments. Topics include user managements, file systems, security, backups, system monitoring, kernel configuration and other relevant aspects of system administration."
+    },
+    "481":{
+        "name":"Design and implementation of programs using visual (i.e. dataflow or diagrammatic) programming techniques, with an emphasis on real-time data processing. Students will learn how to design visual programs, including how to handle cycles and state maintenance, and will learn to process audio, video, and other data using visual programs.",
+        "description":"Database design and implementation; models of database management systems; privacy, security, protection, recovery."
+    },
+    "483":{
+        "name":"Introduction to Robotics",
+        "description":"Basic AI-based robotic architecture and concepts, with an emphasis on building and programming mobile robots. Not for C S graduate students."
+    },
+    "484":{
+        "name":"Computer Networks I",
+        "description":"Fundamental concepts of computer communication networks: layered network architecture, network components, protocol stack and service. Example of application, transport, network and data link layers, protocols primarily drawn from the Internet (TCP, UDP, and IP) protocol multimedia networks; network management and security."
+    },
+    "485":{
+        "name":"Human-Centered Computing",
+        "description":"Covers iterative, human-centered interface design, including prototyping and evaluation. Basics of graphic design and visualization."
+    },
+    "486":{
+        "name":"Bioinformatics",
+        "description":"Introduction to bioinformatics and computational biology. Computational approaches to sequences analysis, protein structure prediction and analysis, and selected topics from current advances in bioinformatics."
+    },
+    "487":{
+        "name":"Applied Machine Learning I",
+        "description":"An introductory course on practical machine learning. An overview of concepts for both unsupervised and supervised learning. Topics include classification, regression, clustering, and dimension reduction. Classical methods and algorithms such as linear regression, neural networks, support vector machines, and ensemble approaches. Recent techniques such as deep learning. Focused on applying of machine learning techniques in application domains."
+    },
+    "488":{
+        "name":"Introduction to Data Mining",
+        "description":"Techniques for exploring large data sets and discovering patterns in them. Data mining concepts, metrics to measure its effectiveness. Methods in classification, clustering, frequent pattern analysis. Selected topics from current advances in data mining."
+    },
+    "489":{
+        "name":"Bioinformatics Programming",
+        "description":""
+    },
+    "491":{
+        "name":"Parallel Programming",
+        "description":"Programming of shared memory and distributed memory machines; tools and languages for parallel programming; techniques for parallel programming; parallel programming environments."
+    }
+}
