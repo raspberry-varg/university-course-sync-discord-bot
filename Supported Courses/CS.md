@@ -1,8 +1,6 @@
 # [CS] SUPPORTED COURSES
 - __**111**__ - Computer Science Principles
 
-- __**117**__ - Introduction to Computer Animation
-
 - __**151**__ - C++ Programming
 
 - __**152**__ - Java Programming
@@ -49,3 +47,43 @@
 
 - __**382**__ - Modern Web Technologies
 	 - Equivalent to: [ CS532 ]
+
+- __**409**__ - Independent Study
+
+- __**419**__ - Computing Ethics and Social Implications of Computing
+
+- __**448**__ - Senior Project
+
+- __**471**__ - Programming Language Structure I
+
+- __**473**__ - Architectural Concepts I
+
+- __**474**__ - Operating Systems I
+
+- __**475**__ - Artificial Intelligence I
+
+- __**476**__ - Computer Graphics I
+
+- __**477**__ - Digital Game Design
+
+- __**478**__ - Computer Security
+
+- __**480**__ - Linux System Administration
+
+- __**481**__ - Design and implementation of programs using visual (i.e. dataflow or diagrammatic) programming techniques, with an emphasis on real-time data processing. Students will learn how to design visual programs, including how to handle cycles and state maintenance, and will learn to process audio, video, and other data using visual programs.
+
+- __**483**__ - Introduction to Robotics
+
+- __**484**__ - Computer Networks I
+
+- __**485**__ - Human-Centered Computing
+
+- __**486**__ - Bioinformatics
+
+- __**487**__ - Applied Machine Learning I
+
+- __**488**__ - Introduction to Data Mining
+
+- __**489**__ - Bioinformatics Programming
+
+- __**491**__ - Parallel Programming
