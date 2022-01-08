@@ -1,5 +1,5 @@
-app/.env
-app/config.json
+.env
+config.json
 /logs
 /node_modules
 /package-lock.json
