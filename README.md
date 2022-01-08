@@ -5,6 +5,7 @@
 Welcome to Course Sync, an all-in-one solution for a growing student Discord server population.
 
 ---
+## 🎉 Now beginning a major transition to TypeScript! 🧬
 
 ## ✏️ Set it, and forget it
 
