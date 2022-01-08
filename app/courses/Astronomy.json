@@ -1,0 +1,228 @@
+{
+    "metadata": {
+        "subject": "Astronomy",
+        "abbreviation": "ASTR",
+        "common": [
+            "astro"
+        ]
+    },
+    "courses": {
+        "301": {
+            "name": "Revolutionary Ideas in Astronomy",
+            "credits": "3 Credits (3)",
+            "description": "Examines recent fundamental scientific revolutions that have shaped our view of Earth and the universe. Topics in astronomy range from exoplanets to black holes to dark energy and raise questions about the very nature of how we use the scientific method to see the unseen, and how this shapes science research today.   ",
+            "link": null,
+            "taughtWith": null
+        },
+        "305": {
+            "name": "The Search for Life in the Universe",
+            "credits": "3 Credits (3)",
+            "description": "Use of information from several of the sciences to explore the likelihood that life exists elsewhere in the universe. Subjects include an overview of historical ideas about the possibility of life elsewhere in the universe, the chemistry and biology of life on Earth, recent explorations for life within our solar system, and current search strategies for life in the universe and their scientific basis.",
+            "link": null,
+            "taughtWith": null
+        },
+        "308": {
+            "name": "Into the Final Frontier",
+            "credits": "3 Credits (3)",
+            "description": "Exploration of space: a brief review of the history of space flight, the Apollo program, joint U.S.-Soviet space missions, and unstaffed exploration of the planets. Emphasis on knowledge gained through these efforts. Includes new space initiatives. Same as HNRS 308V.",
+            "link": null,
+            "taughtWith": null
+        },
+        "400": {
+            "name": "Undergraduate Research",
+            "credits": "1-3 Credits",
+            "description": "Supervised individual study or research.  May be repeated for a maximum of 6 credits.",
+            "link": null,
+            "taughtWith": null
+        },
+        "401": {
+            "name": "Topics in Modern Astrophysics",
+            "credits": "3 Credits (3)",
+            "description": "This course is designed for students interested in astrophysics who have some background in math and physics and want to learn about basic astrophysics and interesting current topics. The course will cover basic astrophysical concepts such as orbital mechanics, light, and radiative processes and transfer. These concepts will be applied to the discussion of exciting modern topics involving planets, exoplanets, stars, galaxies, and/or cosmology, with topical emphasis determined by the instructor.  ",
+            "link": null,
+            "taughtWith": null
+        },
+        "402": {
+            "name": "Introduction to Astronomical Observations and Techniques",
+            "credits": "3 Credits (3)",
+            "description": "Designed for students interested in astrophysics who have some background in math and astronomy and want to learn about techniques for obtaining and analyzing astronomical data. This course will review the properties of light and discuss the process of experimental design. The course will describe basic observational tools such as telescopes and detectors. It will discuss how data is obtained, and how features of the detector and the Earth's atmosphere can be corrected for. Some topics in basic astronomical data analysis will be discussed, with topical emphasis determined by the instructor. Some simple data analysis projects will be assigned. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "403": {
+            "name": "Fundamentals of Astronomy",
+            "credits": "3 Credits (3)",
+            "description": "This course is designed to ensure a basic, quantitative knowledge of fundamental topics in astronomy and astrophysics. These topics include orbital mechanics, properties of radiation, principles of stellar radiation and spectra, structure and dynamics of the Milky Way, properties of galaxies, and basic cosmology.  While this course is designed for first year graduate students, it is also cross-listed as a undergraduate course for students who have already had some exposure to astronomy and are prepared for a fast-paced review of fundamental topics and concepts in astronomy. Undergraduates will have a reduced homework load.  Consent of Instructor required. Crosslisted with: ASTR 505.  ",
+            "link": null,
+            "taughtWith": null
+        },
+        "500": {
+            "name": "Seminar",
+            "credits": "1 Credit (1)",
+            "description": "Organized group study treating selected topics.",
+            "link": null,
+            "taughtWith": null
+        },
+        "503": {
+            "name": "Astrophysics",
+            "credits": "3 Credits (3)",
+            "description": "This course is designed to ensure a basic, quantitative knowledge of fundamental topics in astronomy and astrophysics.  These topics include orbital mechanics, properties of radiation, principles of stellar radiation and spectra, structure and dynamics of the Milky Way, properties of galaxies, and basic cosmology.  ",
+            "link": null,
+            "taughtWith": null
+        },
+        "506": {
+            "name": "Stellar Dynamics and Hydrodynamics",
+            "credits": "3 Credits (3)",
+            "description": "Graduate level course on basic stellar dynamics and fundamentals of hydrodynamics.",
+            "link": null,
+            "taughtWith": null
+        },
+        "530": {
+            "name": "Gas and Radiative Processes in Stars, Galaxies and the IGM",
+            "credits": "3 Credits (3)",
+            "description": "This course will introduce the basic physics of the the primary gaseous environments in the universe and their observational signatures. Astrophysical environment to be addressed will include the atmospheres of stars, the interstellar medium, the circumgalactic medium, and the intergalactic medium.   Physical processes covered will include gas hydrodynamics, radiative and collisional excitation and ionization balance in astrophysics, atomic processes and detailed balancing, heating and cooling balance, and evolution.  From the observational point of view, the course will discuss the spectral signatures of these processes, including stellar spectra, 21-cm spectra, emission line spectra from HII regions and planetary nebulae, and absorption lines from the interstellar medium, circumgalactic medium, and intergalactic medium.    ",
+            "link": null,
+            "taughtWith": null
+        },
+        "535": {
+            "name": "Observational Techniques I (f)",
+            "credits": "3 Credits (3)",
+            "description": "Up-to-date introduction to modern observational astronomy in a two-semester sequence. Topics include: introduction to computers, error analysis in data, the different types of optical telescopes, and optical and infrared photometry, image processing, and detectors.",
+            "link": null,
+            "taughtWith": null
+        },
+        "545": {
+            "name": "Stellar Spectroscopy",
+            "credits": "3 Credits (3)",
+            "description": "This course covers the physics of stellar atmospheres with emphasis on using spectra as a diagnostic tool for understanding the properties of stars.  Topics include spectral classification, radiative transfer, gas equilibrium physics, line and continuum opacities, adiabatic and superadiabatic convection, and extraction of observed quantities from spectra for deducing physical conditions of the source. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "555": {
+            "name": "Galaxies I",
+            "credits": "3 Credits (3)",
+            "description": "Fundamentals of the properties of galaxies and galaxy components, including stars and stellar populations, gas and dust, central black holes, and dark matter.  Includes a detailed description of the properties of the Milky Way Galaxy.    ",
+            "link": null,
+            "taughtWith": null
+        },
+        "565": {
+            "name": "Stellar Interiors",
+            "credits": "3 Credits (3)",
+            "description": "Internal constitutions of stars, computation of stellar models, and stellar evolution.",
+            "link": null,
+            "taughtWith": null
+        },
+        "598": {
+            "name": "Special Research Programs",
+            "credits": "1-6 Credits",
+            "description": "Individual investigations, either analytical or experimental.",
+            "link": null,
+            "taughtWith": null
+        },
+        "599": {
+            "name": "Master's Thesis",
+            "credits": "15 Credits",
+            "description": "Master's level research in astrophysics or observational astronomy.",
+            "link": null,
+            "taughtWith": null
+        },
+        "600": {
+            "name": "Pre-dissertation Research",
+            "credits": "1-15 Credits",
+            "description": "Research.",
+            "link": null,
+            "taughtWith": null
+        },
+        "605": {
+            "name": "Interstellar Medium",
+            "credits": "3 Credits (3)",
+            "description": "Basics of radiative transfer and processes in the interstellar medium. Properties of dust and infrared emission from grains. Applications to neutral atomic and molecular gas and ionized plasmas in galaxies.  May be repeated up to 3 credits. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "610": {
+            "name": "Radio Astronomy",
+            "credits": "3 Credits (3)",
+            "description": "Techniques in observational radio astronomy, including single dish and interferometer arrays. Physical processes that produce radio emission, with a focus on continuum emission.  May be repeated up to 3 credits.  ",
+            "link": null,
+            "taughtWith": null
+        },
+        "616": {
+            "name": "Galaxies II",
+            "credits": "3 Credits (3)",
+            "description": "Galaxy formation within a cosmological context.  Topics include an introduction to cosmology, the growth of linear and nonlinear structures, the formation of dark matter halos, galaxy growth and feedback processes, and their observational signatures in the intergalactic and circumgalactic media. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "620": {
+            "name": "Planetary Surface and Atmospheric Processes",
+            "credits": "3 Credits (3)",
+            "description": "Evaluation and analysis of observational data on solar system objects to determine their nature and physical conditions, with emphasis upon atmospheres (composition, structure, thermodynamics, evolution, etc.) May be repeated up to 3 credits. Restricted to: ASTR majors. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "621": {
+            "name": "Planetary System Formation",
+            "credits": "3 Credits (3)",
+            "description": "The physical processes involved in planetary system formation are addressed. Specific foci include molecular cloud collapse, disk processes, and competing theories of planet formation within disks. Additional topics to be discussed may include: the solar wind, planetary magnetic fields, planetary ring processes, and mineralogy. May be repeated up to 3 credits. Restricted to: ASTR majors. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "625": {
+            "name": "Cosmology",
+            "credits": "3 Credits (3)",
+            "description": "Discussion of our current knowledge of the structure of the universe and current research methods. Topics include the distance scale, clustering of galaxies, large-scale structure, metrics, dark matter, and cosmological probes such as distant quasars, radio galaxies, and gravitational lenses.",
+            "link": null,
+            "taughtWith": null
+        },
+        "630": {
+            "name": "Numerical and Statistical Methods in Astrophysics",
+            "credits": "3 Credits (3)",
+            "description": "Provides basic background in numerical and statistical methods relevant to astrophysical research. Topics include a review of probability and probability distribution functions, Bayesian and frequentist approaches, data simulation, parameter estimation, Markov Chain Monte Carlo, and other topics. May be repeated up to 3 credits. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "670": {
+            "name": "Heliophysics",
+            "credits": "3 Credits (3)",
+            "description": "Explore the Sun and its processes. the heliopshere, and its interactions with the planets. Topics include: A introductory description of space weather and its physics; energy interaction with the space environment; the quiet Sun and its interactions with planetary atmospheres (with an emphasis on Earth); Magnetohydrodynamics; frozen-in flux; the solar wind; magnetized fluid dynamics; the active Sun(flares and coronal mass ejections); the effects of Space Weather.  ",
+            "link": null,
+            "taughtWith": null
+        },
+        "698": {
+            "name": "Special Topics.",
+            "credits": "1-9 Credits",
+            "description": "Special topics.",
+            "link": null,
+            "taughtWith": null
+        },
+        "700": {
+            "name": "Doctoral Dissertation",
+            "credits": "15 Credits",
+            "description": "Dissertation.",
+            "link": null,
+            "taughtWith": null
+        },
+        "1115": {
+            "name": "Introduction Astro (lec+lab)",
+            "credits": "4 Credits (3+2P)",
+            "description": "This course surveys observations, theories, and methods of modern astronomy. The course is predominantly for non-science majors, aiming to provide a conceptual understanding of the universe and the basic physics that governs it. Due to the broad coverage of this course, the specific topics and concepts treated may vary. Commonly presented subjects include the general movements of the sky and history of astronomy, followed by an introduction to basic physics concepts like Newton’s and Kepler’s laws of motion. The course may also provide modern details and facts about celestial bodies in our solar system, as well as differentiation between them – Terrestrial and Jovian planets, exoplanets, the practical meaning of “dwarf planets”, asteroids,  comets, and Kuiper Belt and Trans-Neptunian Objects. Beyond this we may study stars and galaxies, star clusters, nebulae, black holes, and clusters of galaxies. Finally, we may study cosmology--the structure and history of the universe.The lab component of this course includes hands-on exercises that work to reinforce concepts covered in the lecture, and may include additional components that introduce students to the night sky.",
+            "link": null,
+            "taughtWith": null
+        },
+        "1116": {
+            "name": "Introduction to Astronomy Lab, Special",
+            "credits": "1 Credit (1)",
+            "description": "This lab-only listing exists only for students who may have transferred to NMSU having taken a lecture-only introductory astronomy class, to allow them to complete the lab requirement to fulfill the general education requirement. Consent of Instructor required. , at some other institution). Restricted to Las Cruces campus only. ",
+            "link": null,
+            "taughtWith": null
+        },
+        "1120": {
+            "name": "The Planets",
+            "credits": "4 Credits (3+2P)",
+            "description": "Comparative study of the planets, moons, comets, and asteroids which comprise the solar system.  Emphasis on geological and physical processes which shape the surfaces and atmospheres of the planets.  Laboratory exercises include analysis of images returned by spacecraft.  Intended for non-science majors, but some basic math required.",
+            "link": null,
+            "taughtWith": null
+        }
+    }
+}
