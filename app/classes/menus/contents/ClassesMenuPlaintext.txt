@@ -1,0 +1,88 @@
+<startPage>
+
+[description]
+
+Your personal home to all your classes for the Spring 2022 Semester! 🌴\n
+Simply press `Add` or `Remove` below to get started!\n
+\n
+:warning: __**COVID-19 BOOSTER SHOTS ARE NOW REQUIRED FOR THE SPRING 2022 SEMESTER IF YOU ARE ELIGIBLE**__\n
+> Please check your myNMSU email for more information!\n
+\n
+:notebook: __**Your classes not showing up properly?**__\n
+> Use `/reload roles` to quickly fix that!\n
+> \n
+> Or do you still have a role for a class you removed? Didn't sync up properly? That's alright!\n
+> Simply type it into `Remove`, and we will do another sweep and dust it away! :broom:\n
+\n
+:tea: __**Thank you for using Course Sync**__\n
+> Course Sync's mission is to provide a safe, fun, and easy way for students to sync their courses along school servers that offer channels for students to collaborate and share ideas within.\n
+> It is beyond humbling to have incredible users like yourself implement Course Sync within yet another community.\n
+> Thank you once again, and wishing you a wonderful rest of your winter holiday break. See you all Wednesday! :snowflake:\n
+> \n
+> Also, remember to take frequent breaks when studying, the end of the semester is near :blue_heart:\n
+\n
+\n
+\n
+(*crossed out courses are not supported by this Discord server*)\n
+
+[/description]
+
+</startPage>
+
+
+= = = = = = = = = = = = = = = = = = = =
+
+
+<addClassPage>
+
+[description]
+
+:sparkles: __**Set it, and forget it.**__\n
+> With Course Sync, you won't need to struggle with non-functioning reaction roles or updating them every time you join a new server. Input your courses, and we'll do the rest :tea:\n
+\n
+__**[View Currently Supported Classes](<SUPPORTED_CLASSES_URL>)**__\n
+> *with many many more to come!*\n
+\n
+
+[/description]
+
+</addClassPage>
+
+
+= = = = = = = = = = = = = = = = = = = =
+
+
+<removeClassPage>
+
+[description]
+
+:dizzy: __**There is no need to fear,**__\n
+> Course removal is here!\n
+\n
+:twisted_rightwards_arrows: __**Added the wrong class? Dropped one even?**__\n
+> *Or maybe the role didn't disappear when you removed one earlier!*\n
+> \n
+> Regardless of what it is, type in the class and we'll take care of the rest!\n
+\n
+
+[/description]
+
+</removeClassPage>
+
+
+= = = = = = = = = = = = = = = = = = = =
+
+
+<crnTooltip>
+
+__**This bot supports the full-length version of the course identifier.**__\n
+> __I.E.__\n
+> `computer science` => `cs`\n> `c s` => `cs`\n
+> \n
+> Please input your course in the following format without the box braces []:\n
+> \t`[course identifier] [course number]`\n
+> \n
+> __I.E.__\n
+> `cs172` `cs 172` `c s 172` `computer science 172`
+
+</crnTooltip>

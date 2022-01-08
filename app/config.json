@@ -1,0 +1,17 @@
+{
+    "serviceName": "Course Sync",
+    "logoBanner": "https://media.discordapp.net/attachments/907157942594314251/907159920305135646/Concept_Bot_Logo_Banner_Full.png?width=1920&height=480",
+    "colors": {
+        "neutral": "0xeeacd5",
+        "positive": "#0xfcd1b7",
+        "negative": "#0xe4839c",
+        "muted": "#0xfb9ba4",
+        "other": "0xfacdbc"
+    },
+    "disclaimer":
+        "```Any content in channels created by this bot are fully, strictly, and entirely the responsibility and liability of the server owner and/or administrative/moderation team.\nThis bot only creates said channels, but does not monitor them, record any conversations, or endorse any content that is sent within channels made by the client.\n\nThe Course Sync client does NOT collect any data or messages, and does not log any messages as a result. The full responsibility for any violation of NMSU policy is left to the server owner.\nRegardless of this lengthy disclaimer, even if the channels were created by the administrative team themselves within this server, all class channels should be free of any and all [plagiarism](https://arp.nmsu.edu/5-10/), [cheating](https://arp.nmsu.edu/5-10/), and [illegal content](https://arp.nmsu.edu/), and should be monitored regularly by server staff in order to prevent it entirely.\n\nPlagiarism is a highly punishable offense, and is never acceptable under any circumstances. As seen on many course syllabi, discussion among students about the assignments are encouraged, but all files that you submit must be YOUR OWN INDIVIDUAL WORK.```\n> **To read more on New Mexico State University's policies on cheating and plagiarism, [please click here](https://arp.nmsu.edu/5-10/)**.",
+    "hints":[
+        "Hint #1",
+        "Hint #2"
+    ]
+}
