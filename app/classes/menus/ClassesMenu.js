@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const InteractiveMenu = require('../InteractiveMenu');
-const validate = require('../FormatCourse');
+const validate = require('../ValidateCourseInput');
 const verifyAllClassesSupport = require('../VerifyAllClassesSupport');
 const refreshUserClasses = require('../RefreshUserClasses');
 const mongoose = require('mongoose');

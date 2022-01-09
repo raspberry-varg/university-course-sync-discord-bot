@@ -1,11 +1,11 @@
 const { MessageActionRow, MessageButton, MessageEmbed, RoleManager, Role } = require('discord.js');
 const mongoose = require('mongoose');
 const InteractiveMenu = require('../InteractiveMenu');
-const validate = require('../FormatCourse');
+const validate = require('../ValidateCourseInput');
 const refreshServerClasses = require('../RefreshServerClasses');
 const refreshUserClasses = require('../RefreshUserClasses');
 const { userSchema } = require('../../database/schemas/user');
-const validateSubjectInput = require('../FormatSubject');
+const validateSubjectInput = require('../ValidateSubjectInput');
 const MenuContents = require('./contents/ServerDashboardMenu');
 const TIME = 60 * 1000;
 
