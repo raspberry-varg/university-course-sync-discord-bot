@@ -1,0 +1,1 @@
+export type subjects = 'ASTR' | 'BCHE' | 'BIOL' | 'CHEM' | 'CS' | 'ENGL' | 'HIST' | 'JPNS';
