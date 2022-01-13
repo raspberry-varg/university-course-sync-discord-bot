@@ -5,8 +5,6 @@
 Welcome to Course Sync, an all-in-one solution for a growing student Discord server population.
 
 ---
-## 🎉 Now beginning a major transition to TypeScript! 🧬
-
 ## ✏️ Set it, and forget it
 
 With Course Sync, you won't need to struggle with non-functioning reaction roles or updating them every time you join new server. Input your courses, and we'll do the rest :tea:
