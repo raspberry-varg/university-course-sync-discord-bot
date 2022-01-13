@@ -32,15 +32,8 @@ function validateInput( input, client ) {
     }
 
     // finally check if course has the requested crn
-    if ( courseSearch.listings.has( split[1].toString() ) ) {
-
-        if ( courseSearch.listings.get( split[1].toString().toUpperCase() ).link != null ) {
-            split[1] = courseSearch.listings.get( split[1].toString().toUpperCase() ).link?.toString();
-            console.log({ convertedGradCourse: courseSearch.listings.get( split[1].toString().toUpperCase() ).link?.toString() });
-        }
-        
-        return [split[0].toLowerCase(), split[1]];
-    }
+    if ( courseSearch.listings.has( split[1].toString() ) )
+        return [split[0].toLowerCase(), split[1].toString()];
     else
         return false;
 
