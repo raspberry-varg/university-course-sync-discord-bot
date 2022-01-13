@@ -1,4 +1,4 @@
-const { MessageEmbed, SystemChannelFlags } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 /**
  * Supported custom fields.
  * @typedef {Object} pageProperties
