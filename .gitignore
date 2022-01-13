@@ -2,6 +2,8 @@
 config.json
 /app/.env
 /app/config.json
+/src/.env
+/src/config.json
 config.json
 /logs
 /node_modules
@@ -9,4 +11,5 @@ config.json
 /package.json
 /desktop.ini
 /tsconfig.json
+/Supported Courses RAWJSON
 /.vscode
