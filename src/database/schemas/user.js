@@ -1,9 +1,8 @@
 const { Schema } = require('mongoose');
 require('coursesync/types/Subject')
 
-// user schema
 /**
- * @type {{
+ * @typedef {{
  *      userId: string,
  *      university: string,
  *      joinedBot: Date,
@@ -12,7 +11,12 @@ require('coursesync/types/Subject')
  *      classes: Map<SupportedClasses, string[]>
  *      classesCount: number,
  *      staff: boolean
- * }}
+ * }} UserSchema
+ */
+
+/**
+ * User Schema
+ * @type {UserSchema}
  */
 const userSchema = new Schema({
     userId: {
