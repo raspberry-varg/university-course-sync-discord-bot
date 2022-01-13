@@ -1,66 +1,35 @@
-const { MessageActionRow, MessageButton, MessageEmbed, RoleManager, Role } = require('discord.js');
+const { MessageActionRow, MessageButton, MessageEmbed, Role } = require('discord.js');
 const mongoose = require('mongoose');
 const InteractiveMenu = require('./InteractiveMenu');
-const validate = require('../ValidateCourseInput');
-const refreshServerClasses = require('../RefreshServerClasses');
-const refreshUserClasses = require('../RefreshUserClasses');
+const validate = require('../ValidateInput/ValidateCourseInput');
+const refreshServerClasses = require('../Refresh/RefreshServerClasses');
+const refreshUserClasses = require('../Refresh/RefreshUserClasses');
 const { userSchema } = require('../../database/schemas/user');
-const validateSubjectInput = require('../ValidateSubjectInput');
+const serverSchema = require('../../database/schemas/server');
+const validateSubjectInput = require('../ValidateInput/ValidateSubjectInput');
 const MenuContents = require('./contents/ServerDashboardMenu');
 const TIME = 60 * 1000;
 
 class ServerDashboardMenu extends InteractiveMenu {
     
+    /**@type {serverSchema}*/ dbServer;
+    
+    /**
+     * Generate Server Dashboard
+     * @param {Interaction} interaction Discord Interaction
+     * @param {serverSchema} databaseInfo Database server entry
+     */
     constructor( interaction, databaseInfo ) {
         super( interaction );
 
         this.dbServer = databaseInfo;
-        this.changesMade = false;
+        /**@type {boolean}*/      this.changesMade = false;
 
         this.addPage({
             title: '⚙️ Hello, ' + interaction.member.displayName + '!\nWelcome to your server dashboard!',
             description:
                 MenuContents.startPage.description,
-            fields: [
-                {
-                    name: '⚙️ **Config**\n**= = = = = = =**\n\u200b\n♾️ Any Class Allowed: ' + ( this.dbServer.any ? '৹ Yes' : '✕ No' ),
-                    value: '\n**🎨 Course Role Colors: ' + this.dbServer.roleColor.toString() + '**\n\u200b\n**= = = = = = =**',
-                    inline: false,
-                },
-                {
-                    name: /*'[' + ( databaseInfo.courseType.size > 0 ? '✅' : '❌' ) + ']*/ '__🏫 Allowed Subjects__',
-                    value: databaseInfo.courseType.size > 0
-                        ?
-                        [...databaseInfo.courseType.keys()].map( key => {
-                            return `> ৹ **\`${key.toUpperCase()}\`**`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-                {
-                    name: /*'[' + ( databaseInfo.courseSpecific.size > 0 ? '✅' : '❌' ) + ']*/ '__📔 Course Whitelist__',
-                    value: databaseInfo.courseSpecific.size > 0
-                        ?
-                        [...databaseInfo.courseSpecific.keys()].map( key => {
-                            return `> ৹ **${key.toUpperCase()}**: [${databaseInfo.courseSpecific.get(key).join(', ')}]`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-                {
-                    name: /*'[' + ( this.dbServer.courseBlacklist.size > 0 ? '✅' : '❌' ) + ']*/ '__🎴 Course Blacklist__',
-                    value: databaseInfo.courseBlacklist.size > 0
-                        ?
-                        [...databaseInfo.courseBlacklist.keys()].map( key => {
-                            return `> ✕ **${key.toUpperCase()}**: [${databaseInfo.courseBlacklist.get(key).join(', ')}]`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-            ],
+            fields: this.pageFields(),
             thumbnail: interaction.guild.iconURL(),
             color: interaction.client.config.colors.neutral,
         });
@@ -68,6 +37,49 @@ class ServerDashboardMenu extends InteractiveMenu {
 
         this.buttons = populateButtons( databaseInfo.any );
 
+    }
+
+    pageFields() {
+        return [
+            {
+                name: '⚙️ **Config**\n**= = = = = = =**\n\u200b\n♾️ Any Class Allowed: ' + ( this.dbServer.any ? '৹ Yes' : '✕ No' ),
+                value: '\n**🎨 Course Role Colors: ' + this.dbServer.roleColor.toString() + '**\n\u200b\n**= = = = = = =**',
+                inline: false,
+            },
+            {
+                name: '__🏫 Allowed Subjects__',
+                value: this.dbServer.courseType.size > 0
+                    ?
+                    [...this.dbServer.courseType.keys()].map( key => {
+                        return `> ৹ **\`${key.toUpperCase()}\`**`;
+                    }).join('\n') + '\n\u200b'
+                    :
+                    '> 🏜️  Empty\u200b\n\u200b',
+                inline: true,
+            },
+            {
+                name: '__📔 Course Whitelist__',
+                value: this.dbServer.courseSpecific.size > 0
+                    ?
+                    [...this.dbServer.courseSpecific.keys()].map( key => {
+                        return `> ৹ **${key.toUpperCase()}**: [${this.dbServer.courseSpecific.get(key).join(', ')}]`;
+                    }).join('\n') + '\n\u200b'
+                    :
+                    '> 🏜️  Empty\u200b\n\u200b',
+                inline: true,
+            },
+            {
+                name: '__🎴 Course Blacklist__',
+                value: this.dbServer.courseBlacklist.size > 0
+                    ?
+                    [...this.dbServer.courseBlacklist.keys()].map( key => {
+                        return `> ✕ **${key.toUpperCase()}**: [${this.dbServer.courseBlacklist.get(key).join(', ')}]`;
+                    }).join('\n') + '\n\u200b'
+                    :
+                    '> 🏜️  Empty\u200b\n\u200b',
+                inline: true,
+            }
+        ]
     }
 
     async startPage() {
@@ -170,46 +182,7 @@ class ServerDashboardMenu extends InteractiveMenu {
     async updateStartPage() {
         
         if ( this.changesMade ) {
-            this.pages[0].setFields([
-                {
-                    name: '⚙️ **Config**\n**= = = = = = =**\n\u200b\n♾️ Any Class Allowed: ' + ( this.dbServer.any ? '৹ Yes' : '✕ No' ),
-                    value: '\n**🎨 Course Role Colors: ' + this.dbServer.roleColor.toString() + '**\n\u200b\n**= = = = = = =**',
-                    inline: false,
-                },
-                {
-                    name: /*'[' + ( databaseInfo.courseType.size > 0 ? '✅' : '❌' ) + ']*/ '__🏫 Allowed Subjects__',
-                    value: this.dbServer.courseType.size > 0
-                        ?
-                        [...this.dbServer.courseType.keys()].map( key => {
-                            return `> ৹ **\`${key.toUpperCase()}\`**`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-                {
-                    name: /*'[' + ( databaseInfo.courseSpecific.size > 0 ? '✅' : '❌' ) + ']*/ '__📔 Course Whitelist__',
-                    value: this.dbServer.courseSpecific.size > 0
-                        ?
-                        [...this.dbServer.courseSpecific.keys()].map( key => {
-                            return `> ৹ **${key.toUpperCase()}**: [${this.dbServer.courseSpecific.get(key).join(', ')}]`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-                {
-                    name: /*'[' + ( this.dbServer.courseBlacklist.size > 0 ? '✅' : '❌' ) + ']*/ '__🎴 Course Blacklist__',
-                    value: this.dbServer.courseBlacklist.size > 0
-                        ?
-                        [...this.dbServer.courseBlacklist.keys()].map( key => {
-                            return `> ✕ **${key.toUpperCase()}**: [${this.dbServer.courseBlacklist.get(key).join(', ')}]`;
-                        }).join('\n') + '\n\u200b'
-                        :
-                        '> 🏜️  Empty\u200b\n\u200b',
-                    inline: true,
-                },
-            ],);
+            this.pages[0].setFields( this.pageFields() );
 
             this.pages[0] = new MessageEmbed( this.pages[0] );
         
