@@ -3,8 +3,8 @@ const serverSchema = require('../../database/schemas/server');
 const { userSchema } = require('../../database/schemas/user');
 const { MessageEmbed, Permissions } = require('discord.js');
 const { ApplicationCommandOptionType: OptionTypes } = require('discord-api-types/v9');
-const refreshUserClasses = require('../../classes/RefreshUserClasses');
-const refreshServerClasses = require('../../classes/RefreshServerClasses');
+const refreshUserClasses = require('../../util/Refresh/RefreshUserClasses');
+const refreshServerClasses = require('../../util/Refresh/RefreshServerClasses');
 
 module.exports = {
     name: 'reload',

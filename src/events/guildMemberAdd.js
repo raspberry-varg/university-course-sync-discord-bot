@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const mongoose = require('mongoose');
 const { userSchema } = require('../database/schemas/user');
 const serverSchema = require('../database/schemas/server');
-const refreshUserClasses = require('../classes/RefreshUserClasses');
+const refreshUserClasses = require('../util/Refresh/RefreshUserClasses');
 const User = mongoose.model('User', userSchema );
 const Server = mongoose.model('Server', serverSchema );
 
