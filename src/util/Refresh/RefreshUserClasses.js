@@ -2,103 +2,49 @@ const mongoose = require('mongoose');
 const { Permissions, Interaction } = require('discord.js');
 const { userSchema } = require('../../database/schemas/user');
 const serverSchema = require('../../database/schemas/server');
+const fetchCourseCategory = require('./fetchCourseCategory');
 const verifyClassSupport = require('../VerifySupport/VerifyOneClassSupport');
-const verifyOneCourseTypeSupport = require('../VerifySupport/VerifyOneCourseTypeSupport');
+const verifyOneSubjectSupport = require('../VerifySupport/VerifyOneSubjectSupport');
 const refreshProxyUserClasses = require('./RefreshProxyUserClasses');
 require('coursesync/types/Subject');
 
 
 /**
- * 
+ * Scan through user's classes and create roles and channels
+ * for supported courses.
  * @param {Interaction} interaction Original interaction.
  * @param {userSchema} foundUser User data from database.
  * @param {serverSchema} foundServer Server data from database.
  * @param {boolean} bypassProxy Skip proxy reloads for user.
- * @returns 
+ * @returns {Promise<string>} Promise when completed.
  */
 async function refreshUserClasses( interaction, foundUser, foundServer, bypassProxy ) {
     
     const memberObj = await interaction.guild.members.fetch( foundUser.userId );
-    const debugId = `[${ memberObj.user.username }(${foundUser.userId})] `;
 
     // cycle through each course and check against server data
-    console.log( debugId + "CYCLING THROUGH EACH COURSE AND CHECKING AGAINST SERVER DATA");
-    console.log( foundUser.classes );
-    for ( let [ subject, array ] of foundUser.classes ) {
-    // await foundUser.classes.forEach( async ( array, subject ) => {
-        console.log({ array: array, subject: subject });
+    for ( let [ subject, courseArray ] of foundUser.classes ) {
 
-        console.log( debugId + "\n\nCURRENT subject: ");
-        console.log( subject );
         /*
-            * Okay so:
-            * 
-            * 1) Verify that the course subject is supported
-            * 2) Get the course CATEGORY CHANNEL; create one and save if not found
-            *         TODO: go through every channel and re-append to the new category channel.
-            * 3) Check every course the user has against: ROLE & CHANNEL FOR IT
-            * 
-            */
+         * Verification
+         * ------------
+         * 
+         * 1) Continue if subject is not hosted.
+         * 2) Get and filter subject channel category ID from database.
+         *    Default to '-1' if none found.
+         * 3) Fetch subject category channel.
+         */
 
         // check to ensure the subject is valid in the server
-        if ( !verifyOneCourseTypeSupport( subject, foundServer ) ) {
-            console.log( debugId + "THIS ENTIRE SUBJECT IS NOT SUPPORTED");
+        if ( !verifyOneSubjectSupport( subject, foundServer ) )
             continue;
-        }
-        else
-            console.log( debugId + "REFRESHING " + subject);
         
-        //// THIS WORKS
-        // ! nevermind
         // grab category for the current course subject or create and save if non-existent
         var parentId = foundServer.courseParents.get( subject )?.replace(/[^0-9]/g, '') || '-1';
-        console.log({ parentId: parentId });
 
-        // retrieve course category channel
-        await interaction.guild.channels.fetch();
-        const courseCategory = await interaction.guild.channels.fetch( parentId.toString() )
-            .then( async found => {
-                console.log( debugId + "FIXME: VAR found IN ARROW: " + found );
-                if ( found == undefined )
-                    return await interaction.guild.channels.create( subject.toUpperCase(), {
-                        type: 4, // category
-                        permissionOverwrites: [],
-                    }).then( async created => { // save to database
-                        console.log( debugId + 'THEN -> FOUND IS UNDEFINED-- HAD TO CREATE A NEW CHANNEL: created new channel category. ID: ' + created.id );
 
-                        // set to database courseParents
-                        foundServer.courseParents.set( subject, created );
-                        // return created;
-                    });
-                return found;
-            })
-            .catch( async (e) => {
-                // console.error(e);
-                console.log( debugId + "\tNo channel category found, creating...");
-                return await interaction.guild.channels.create( subject.toUpperCase(), {
-                    type: 4, // category
-                    permissionOverwrites: [],
-                }).then( async created => { // save to database
-                    console.log( debugId + 'created new channel category. ID: ' + created.id );
-
-                    // set to database courseParents
-                    foundServer.courseParents.set( subject, created );
-
-                    // re-append
-                    for ( const channel of foundServer.courseData.get( subject ) ) {
-                        console.log( channel );
-                        try {
-                            ( await interaction.guild.channels.fetch( channel[1].channelId ) ).setParent( created, { lockPermissions: false, reason: "Re-appending to new category parent." } );
-                        }
-                        catch ( error ) {
-                            console.log("Unable to set channel to new parent.");
-                        }
-                    }
-                    return created;
-                });
-            });
-        console.log( debugId + `CURRENT COURSE CATEGORY: ${courseCategory.name}(${courseCategory.id})[${courseCategory.type}]`);
-
+        // retrieve subject category channel
+        const courseCategory = await fetchCourseCategory( interaction.guild, interaction.client, foundServer, subject, parentId );
 
 
 
@@ -107,78 +53,60 @@ async function refreshUserClasses( interaction, foundUser, foundServer, bypassPr
             foundServer.courseData.set( subject, {} );
         
         // cycle through each course within the subject type ( I.E.   { CS: [...] }, { ENGL: [...] } )
-        // await array.forEach( async value => {
-        let checkLinkCache;
-        for ( let courseNum of array ) {
+        for ( let courseNum of courseArray ) {
             courseNum = courseNum.toString();
-            console.log( debugId + "\n\tCURRENT CLASS: " + courseNum );
-            
+
             // if server supports the course
             if ( verifyClassSupport([ subject, courseNum ], foundServer ) ) {
 
-                checkLinkCache = interaction.client.courses.get( subject.toUpperCase() ).listings.get( courseNum ).link;
+                // check to see if the course is a GRAD course linked to an UNDERGRAD course
+                let checkLinkCache = interaction.client.courses.get( subject.toUpperCase() ).listings.get( courseNum ).link;
                 if ( checkLinkCache != null )
-                    courseNum = checkLinkCache;
+                    courseNum = checkLinkCache.toString();
                 
-                // check if server has role and channel data
+                // check if server has role and channel data for the given course
                 let courseConfig = foundServer.courseData.get( subject ).get( courseNum );
                 if ( !courseConfig ) {
-                    console.log( debugId + "\tNO COURSE CONFIG FOUND, CREATING...");
                     courseConfig = {
-                        roleId: '-1',//'910034972058976276',
+                        roleId: '-1',
                         channelId: '-1',
                     }
                     foundServer.courseData.get( subject ).set( courseNum.toString(), courseConfig );
-                    // foundServer.courseData = new Map( foundServer.courseData );
-                    console.log( foundServer.courseData.get( subject ) );
                 }
-                else
-                    console.log( debugId + "\tCOURSE CONFIG FOUND.");
 
-                console.log( debugId + "\tPARENT: " + courseCategory.id);
+
 
                 // create new role and channel dedicated to the course
-                console.log( debugId + "\tcourseConfig:")
-                console.log( courseConfig );
-
-                console.log( debugId + "\tFetching role...");
                 var newRoleCreated = false;
-                const fetchedRole = await interaction.guild.roles.fetch( courseConfig.roleId.toString() )
-                    .then( found => {
-                        console.log( debugId + `Role successfully found! Role: ${found.name}(${found.id})`);
-                        memberObj.roles.add( found ).catch( e => console.error( e ) );
-                        return found;
-                    })
-                    .catch( async () => {
-                        console.log( debugId + "\tNo role found, creating...");
-                        return await interaction.guild.roles.create({
-                            name: subject.toUpperCase() + courseNum,
-                            permissions: [],
-                            color: foundServer.roleColor,
-                        })
-                        .then( created => {
-                            console.log( debugId + "New role created.");
-                            newRoleCreated = true;
-                            // save to database
-                            // foundServer.courseData.get( subject );
-                            foundServer.courseData.get( subject ).get(courseNum.toString()).roleId = created.id;
-                            // foundServer.courseData.get( subject ).get(courseNum).roleId = created.id;
-                            console.log(foundServer.courseData.get( subject ).get(courseNum));
-                            memberObj.roles.add( created ).catch( e => console.error( e ) );
+                const fetchedRole = await new Promise( resolve => {
+                    interaction.guild.roles.fetch( courseConfig.roleId.toString() )
+                        .then( found => {
+                            if ( found != undefined ) { // if found add to member
+                                memberObj.roles.add( found ).catch( e => console.error( e ) );
+                                resolve( found );
+                            }
+                            else { // create role
+                                interaction.guild.roles.create({
+                                    name: subject.toUpperCase() + courseNum,
+                                    permissions: [],
+                                    color: foundServer.roleColor,
+                                }).then( created => {
 
-                            return created;
-                        });
+                                    // mark flag and save to database
+                                    newRoleCreated = true;
+                                    foundServer.courseData.get( subject ).get( courseNum ).roleId = created.id;
+        
+                                    memberObj.roles.add( created ).catch( e => console.error( e ) );
+                                    resolve( created );
+                                });
+                            }
                     });
-
+                });
+                
                 // fetch given channel
-                console.log( debugId + "Fetching channel...");
                 const fetchedChannel = await interaction.guild.channels.fetch( courseConfig.channelId.toString() )
-                    .then( found => {
-                        console.log( debugId + `Channel successfully found! ${found.name}(${found.id})`);
-                        return found;
-                    })
+                    .then( found => { return found })
                     .catch( async () => {
-                        console.log( debugId + "\tNo channel found, creating...");
                         return await interaction.guild.channels.create( subject.toUpperCase() + courseNum, {
                             type: 0, // guild text
                             parent: courseCategory?.id || courseCategory,
@@ -195,12 +123,8 @@ async function refreshUserClasses( interaction, foundUser, foundServer, bypassPr
                                 },
                             ],
                         }).then( created => {
-                            console.log( debugId + `New channel created. ${created.name}(${created.id})`);
                             // save to database
-                            foundServer.courseData.get( subject ).get(courseNum).channelId = created.id;
-                            console.log( foundServer.courseData.get(subject).get(courseNum) );
-                            // foundServer.courseData.get( subject ).set( value, {...data} );
-
+                            foundServer.courseData.get( subject ).get( courseNum ).channelId = created.id;
                             return created;
                         });
                     });
@@ -224,16 +148,14 @@ async function refreshUserClasses( interaction, foundUser, foundServer, bypassPr
                     });
                 }
             }
-            else
-                console.log( debugId + '\tThis class is not supported.');
 
-        }; // end for each
-        console.log();
-    }//); // end outer loop
-    console.log( debugId + "THE OUTER LOOP HAS BEEN BROKEN");
+        } // end for courseNum : courseArray
 
-    if ( !bypassProxy ) {
-        console.log( debugId + 'refreshing proxy servers...')
+    } // end for [subject, courseArray] : user.classes
+
+    // refresh user classes external to the current server
+    if ( bypassProxy == false ) {
+
         let promiseResolves = [];
         foundUser.cachedServers.forEach( async s => {
     
@@ -244,15 +166,11 @@ async function refreshUserClasses( interaction, foundUser, foundServer, bypassPr
             const Server = mongoose.model('Server', serverSchema );
             await interaction.client.guilds.fetch( s )
                 .then( async guild => {
-                    await refreshProxyUserClasses( guild, foundUser, await Server.findOne({ guildId: guild.id }) );
-                })
-                .catch( e => {
-                    console.log( debugId + `server ${s} does not exist, skipping...`);
-                    foundUser.cachedServers.splice( foundUser.cachedServers.indexOf( s ), 1 );
-                });
+                    await refreshProxyUserClasses( guild, interaction.client, foundUser, await Server.findOne({ guildId: guild.id }) );
+                }).catch(() => foundUser.cachedServers.splice( foundUser.cachedServers.indexOf( s ), 1 ));
             
         });
-        await Promise.all( promiseResolves ).then( s => console.log( debugId + "ALL PROXIES RELOADED") );
+        await Promise.all( promiseResolves ).then(() => console.log("ALL PROXIES RELOADED") );
     }
     else
         console.log('Proxy refresh bypassed.');
