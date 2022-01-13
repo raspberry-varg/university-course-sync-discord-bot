@@ -2,8 +2,7 @@ const { Schema } = require("mongoose");
 require('coursesync/types/Subject');
 
 /**
- * Class Schema
- * @type {{
+ * @typedef {{
  *      guildId: string,
  *      any: boolean,
  *      roleColor: string,
@@ -11,11 +10,17 @@ require('coursesync/types/Subject');
  *      courseType: Set<string>
  *      courseBlacklist: Map<SupportedClasses, string[]>
  *      courseParents: Map<SupportedClasses, string>
- *      courseData: Map<SupportedClasses, Map<CourseNumber, {
- *          roleId: string | '-1'
- *          channelId: string | '-1'
- *      }>>
- * }}
+ *      courseData: Map<SupportedClasses, Map<CourseNumber, CourseData>>
+ * }} ServerSchema
+ * @typedef {{
+ *      roleId: string | '-1'
+ *      channelId: string | '-1'
+ *}} CourseData
+ */
+
+/**
+ * Server Schema
+ * @type {ServerSchema}
  */
 const serverSchema = new Schema({
     guildId: {
@@ -45,7 +50,7 @@ const serverSchema = new Schema({
         of: [String],
         default: new Map(),
     },
-    courseParents : {              // this is such a horrible way to handle channels but it's the best I've got right now.
+    courseParents: {
         type: Map,
         of: String,
         default: new Map(),
