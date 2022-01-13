@@ -1,6 +1,5 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Interaction } = require('discord.js');
 const InteractiveMenuPage = require('./InteractiveMenuPage');
-const helloWorld = "javascript with typescript files test successful :)";
 /**
  * Base class for any interactive menu with users.
  */
@@ -8,8 +7,8 @@ class InteractiveMenu {
 
     /**
      * Construct an interactive menu.
-     * @param {Snowflake} interaction Discord Interaction Snowflake.
-     * @var {[InteractiveMenuPage]} this.pages Array of pages.
+     * @param {Interaction} interaction Discord Interaction Snowflake.
+     * @var {InteractiveMenuPage[]} this.pages Array of pages.
      */
     constructor( interaction ) {
         
