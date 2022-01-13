@@ -1,8 +1,10 @@
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
-const InteractiveMenu = require('../InteractiveMenu');
-const validate = require('../ValidateCourseInput');
-const verifyAllClassesSupport = require('../VerifyAllClassesSupport');
-const refreshUserClasses = require('../RefreshUserClasses');
+const { MessageActionRow, MessageButton, MessageEmbed, Interaction } = require('discord.js');
+const InteractiveMenu = require('./InteractiveMenu');
+const validate = require('../ValidateInput/ValidateCourseInput');
+const verifyAllClassesSupport = require('../VerifySupport/VerifyAllClassesSupport');
+const refreshUserClasses = require('../Refresh/RefreshUserClasses');
+const { userSchema } = require('../../database/schemas/user');
+const serverSchema = require('../../database/schemas/server');
 const mongoose = require('mongoose');
 // const Server = mongoose.model('Server', require('../../database/schemas/server') );
 const MenuContents = require('./contents/ClassesMenu');
@@ -10,6 +12,15 @@ const TIME = 60 * 1000;
 
 class ClassesMenu extends InteractiveMenu {
     
+    /**@type {userSchema}*/ dbUser;
+    /**@type {serverSchema}*/ dbServer;
+
+    /**
+     * 
+     * @param {Interaction} interaction 
+     * @param {userSchema} userData 
+     * @param {serverSchema} serverData 
+     */
     constructor( interaction, userData, serverData ) {
         super( interaction );
         this.dbUser = userData;
@@ -46,10 +57,7 @@ class ClassesMenu extends InteractiveMenu {
 
         let BCollector = this.interaction.channel.createMessageComponentCollector({ filter: filter, componentType: 'BUTTON', max: 1, time: TIME });
         BCollector.on('collect', button => {
-            
-            // console.log({ clicked: button.customId, clicker: this.interaction.user.username });
 
-            // BCollector.stop();
             switch( button.customId ) {
                 case 'class_add':
                     return this.addClassPage();
@@ -60,7 +68,7 @@ class ClassesMenu extends InteractiveMenu {
                 default:
                     return this.close('time');
             }
-
+            
         });
 
         BCollector.on('end', collected => {
@@ -132,10 +140,13 @@ class ClassesMenu extends InteractiveMenu {
             }
 
 
-            // check if user has college type
+            // check if user has subject type
+            validated[0] = validated[0].toLowerCase();
+            validated[1] = validated[1].toString();
             if ( !this.dbUser.classes.has( validated[0] ) )
                 this.dbUser.classes.set( validated[0], [] );
-            // add to array of course
+            
+            // add to array of courses
             let courseMap = new Map( this.dbUser.classes );
             let courseArray = courseMap.get( validated[0] );
             if ( !courseArray.includes( validated[1] ) ) {
@@ -149,7 +160,7 @@ class ClassesMenu extends InteractiveMenu {
 
             // save to user
             this.dbUser.classes = courseMap;
-            console.log( this.dbUser.classes[validated[0]] );
+            this.dbUser.markModified('classes');
 
             await this.dbUser.save().catch( e => console.error(e) );
             console.log( this.dbUser );
@@ -192,7 +203,6 @@ class ClassesMenu extends InteractiveMenu {
         const messageFilter = ( msg ) => msg.guild.id === this.interaction.guild.id && msg.author.id === this.interaction.user.id;
         const MCollector = this.interaction.channel.createMessageCollector({ filter: messageFilter, time: TIME });
 
-
         MCollector.on('collect', async c => {
 
             console.log({ collected: c.content.substring( 0, 20 ), user: this.interaction.user.username });
@@ -216,8 +226,10 @@ class ClassesMenu extends InteractiveMenu {
                 return this.interaction.followUp({ content: 'That is not valid! Try again.', ephemeral: true });
             }
 
-            // remove from array of course
-            let courseMap = new Map( this.dbUser.classes );
+            // remove from array of courses
+            validated[0] = validated[0].toLowerCase();
+            validated[1] = validated[1].toString();
+            let courseMap = this.dbUser.classes;
             let courseArray = courseMap.get( validated[0] );
             if ( !courseArray.includes( validated[1] ) ) {
                 this.interaction.followUp({ content: "You're not in that class, but we made absolutely sure you don't have it!", ephemeral: true });
@@ -235,11 +247,12 @@ class ClassesMenu extends InteractiveMenu {
 
             // save to user
             this.dbUser.classes = courseMap;
-            console.log( this.dbUser.classes[validated[0]] );
 
             // delete role
+            let checkLinkCache = this.interaction.client.courses.get( validated[0].toUpperCase() ).listings.get( validated[1] ).link?.toString();
+            
             console.log("\tFetching role...");
-            await this.interaction.guild.roles.fetch( this.dbServer.courseData?.get( validated[0] )?.get( validated[1] )?.roleId?.toString() || '-1' )
+            await this.interaction.guild.roles.fetch( this.dbServer.courseData?.get( validated[0] )?.get( checkLinkCache || validated[1] )?.roleId?.toString() || '-1' )
                 .then( async found => {
                     await this.interaction.member.roles.remove( found )
                         .catch(() => console.log("\tRole not contained, no action required."));;
@@ -257,7 +270,7 @@ class ClassesMenu extends InteractiveMenu {
                         .then( async guild => {
                             const Server = mongoose.model('Server', require('../../database/schemas/server') );
                             let guildData = await Server.findOne({ guildId: guild.id })
-                            guild.roles.fetch( guildData.courseData?.get( validated[0] )?.get( validated[1] )?.roleId?.toString() || '-1' )
+                            guild.roles.fetch( guildData.courseData?.get( validated[0] )?.get( checkLinkCache || validated[1] )?.roleId?.toString() || '-1' )
                                 .then( async found => {
                                     await guild.members.fetch( this.interaction.user.id ).then( m => m.roles.remove( found )).catch();
                                     console.log(`Role successfully found and removed! Role: ${found.name}(${found.id})`);
