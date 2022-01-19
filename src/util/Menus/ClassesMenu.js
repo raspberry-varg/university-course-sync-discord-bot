@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 // const Server = mongoose.model('Server', require('../../database/schemas/server') );
 const MenuContents = require('./contents/ClassesMenu');
 const TIME = 60 * 1000;
+// hello git! :)
 
 class ClassesMenu extends InteractiveMenu {
     
