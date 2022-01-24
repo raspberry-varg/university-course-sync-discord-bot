@@ -188,7 +188,9 @@ class InteractiveMenu {
             case 'duplicateMenu':
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('⚠️ A new command has been called!').setDescription('Please refrain from calling other commands while menus are active!') ], components: [] });
             case 'refresh':
-                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ Refresh complete.').setFooter('You may now dismiss this menu.') ], components: [] });
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('🧮 Refresh complete.').setFooter('You may now dismiss this menu.') ], components: [] });
+            case 'discard':
+                return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✂️ All changes have been snipped away.').setFooter('You may now dismiss this menu.') ], components: [] })
             default:
                 return await this.interaction.editReply({ embeds: [ closeEmbed.setTitle('✅ This menu has been successfully closed.').setFooter('You may now dismiss this menu.') ], components: [] });
         }
