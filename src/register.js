@@ -11,7 +11,7 @@ const GUILDS = [/*'903924793542311947',*/ '910745675006877757'];
 async function registerClientCommands( client ) {
 
     const commands = client.commands.map( ({ execute, ...data }) => data );
-    const Rest = new REST({ version: '9' }).setToken( process.env.CLIENT_TOKEN );
+    const Rest = new REST({ version: '9' }).setToken( process.env.DISCORD_TOKEN );
     const queue = [];
     // const DELETE_LOCALS = true;
     // var deletePromises = [];
@@ -21,7 +21,7 @@ async function registerClientCommands( client ) {
     //     for ( g of GUILDS )
     //         deletePromises.push(
     //             Rest.put(
-    //                 Routes.applicationGuildCommands( process.env.CLIENT_ID, g ), { body: [] }
+    //                 Routes.applicationGuildCommands( client.user.id, g ), { body: [] }
     //             )
     //         );
 
@@ -31,7 +31,7 @@ async function registerClientCommands( client ) {
     
     queue.push(
         Rest.put(
-            Routes.applicationCommands( process.env.CLIENT_ID ), { body: commands },
+            Routes.applicationCommands( client.user.id ), { body: commands },
         )
     );
 
@@ -42,7 +42,7 @@ async function registerClientCommands( client ) {
             queue.push( client.guilds.cache.get( g )?.commands.set( commands ) );
             queue.push(
                 Rest.put(
-                    Routes.applicationGuildCommands( process.env.CLIENT_ID, g ), { body: commands },
+                    Routes.applicationGuildCommands( client.user.id, g ), { body: commands },
                 )
             );
         }
