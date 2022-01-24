@@ -32,7 +32,7 @@ module.exports = {
                         new MessageButton()
                             .setLabel('Github Repo')
                             .setStyle('LINK')
-                            .setURL( process.env.GITHUB_REPO_LINK ),
+                            .setURL( guild.client.config.githubRepoURL ),
                     ]),
                 ],
                 ephemeral: true })
@@ -61,7 +61,7 @@ module.exports = {
                         new MessageButton()
                             .setLabel('Github Repo')
                             .setStyle('LINK')
-                            .setURL( process.env.GITHUB_REPO_LINK ),
+                            .setURL( guild.client.config.githubRepoURL ),
                     ]),
                 ],
                 ephemeral: true })
