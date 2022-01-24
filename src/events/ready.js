@@ -5,7 +5,7 @@ module.exports = {
         client.user.setPresence({
             activities: [
                 {
-                    name: 'my big debut! 🎉 | v1.0 | Happy Holidays! ❄️',
+                    name: 'v2.0 | Spring has arrived! 🌴',
                     type: 'WATCHING',
                 },
             ],
