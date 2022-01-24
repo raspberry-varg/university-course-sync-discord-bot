@@ -20,7 +20,7 @@ registerClientCommands( client )
     .catch( error => console.error("Unable to parse client commands. " + error.stack ) );
 
 // login
-client.login( process.env.CLIENT_TOKEN );
+client.login( process.env.DISCORD_TOKEN );
 console.log( require('./util/ValidateInput/ValidateCourseInput')('cs273', client) );
 console.log( require('./util/ValidateInput/ValidateCourseInput')('engl273', client) );
 console.log( require('./util/ValidateInput/ValidateCourseInput')('computer science 273', client) );
