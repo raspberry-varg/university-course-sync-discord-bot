@@ -19,7 +19,7 @@ module.exports = async function( guild, client, foundServer, subject, parentId )
         .then( async found => {
             // if category does not exist, create a new category and store
             if ( found == undefined )
-                return await guild.channels.create( client.courses.get( subject.toUpperCase() ).metadata.subject, {
+                return await guild.channels.create('⌬ ' + client.courses.get( subject.toUpperCase() ).metadata.subject, {
                     type: 4, // category
                     permissionOverwrites: [],
                 }).then( async created => foundServer.courseParents.set( subject, created ) );
@@ -28,7 +28,7 @@ module.exports = async function( guild, client, foundServer, subject, parentId )
         })
         .catch( async () => {
 
-            return await guild.channels.create( client.courses.get( subject.toUpperCase() ).metadata.subject, {
+            return await guild.channels.create('⌬ ' + client.courses.get( subject.toUpperCase() ).metadata.subject, {
                 type: 4, // category
                 permissionOverwrites: [],
             }).then( async created => {
