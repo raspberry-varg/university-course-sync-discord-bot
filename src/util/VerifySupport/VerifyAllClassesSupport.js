@@ -44,11 +44,12 @@ function verifyAllClassesSupport( interaction, userData, serverData ) {
         for ( const key of userData.classes.keys() ) {
 
             let courseBloc = userData.classes.get( key ).map( ( value ) => {
+                current = interaction.client.courses.get( key.toUpperCase() ).listings.get( value );
                 
                 if ( quickCheck( key, value, serverData ) )
-                    return `> ৹ **${key.toUpperCase()}** ${value} ${client.courses.get(key.toUpperCase()).listings.get(value).name}`;
+                    return `> ৹ **${key.toUpperCase()}** ${value}${current.link != null ? `/${current.link}` : ''} ${client.courses.get(key.toUpperCase()).listings.get(value).name}`;
                 else
-                    return `> ✕ ~~${key.toUpperCase()} ${value} ${client.courses.get(key.toUpperCase()).listings.get(value).name}~~`;
+                    return `> ✕ ~~${key.toUpperCase()} ${value}${current.link != null ? `/${current.link}` : ''} ${client.courses.get(key.toUpperCase()).listings.get(value).name}~~`;
                 
             });
 
