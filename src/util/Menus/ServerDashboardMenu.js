@@ -42,8 +42,10 @@ class ServerDashboardMenu extends InteractiveMenu {
     pageFields() {
         return [
             {
-                name: '⚙️ **Config**\n**= = = = = = =**\n\u200b\n♾️ Any Class Allowed: ' + ( this.dbServer.any ? '৹ Yes' : '✕ No' ),
-                value: '\n**🎨 Course Role Colors: ' + this.dbServer.roleColor.toString() + '**\n\u200b\n**= = = = = = =**',
+                name: '⚙️ **Config**\n**= = = = = = =**',
+                value: '\n**🎨 Course Role Colors: ' + this.dbServer.roleColor.substring(0, 2) + this.dbServer.roleColor.substring(2).toUpperCase() + '**\n'
+                    + '**🧹 Auto-Delete on Empty: coming soon.**\n\u200b\n' +
+                    '**= = = = = = =**',
                 inline: false,
             },
             {
@@ -89,7 +91,7 @@ class ServerDashboardMenu extends InteractiveMenu {
             components: [
                 new MessageActionRow({ components: [ this.buttons.courses, this.buttons.whitelist, this.buttons.blacklist ] }),
                 new MessageActionRow({ components: [ this.buttons.colors ] }),
-                new MessageActionRow({ components: [ this.buttons.any, this.buttons.close ] }),
+                new MessageActionRow({ components: ( this.changesMade ? [ this.buttons.close, this.buttons.discard ] : [ this.buttons.close ] ) }),
             ],
         });
 
@@ -104,11 +106,11 @@ class ServerDashboardMenu extends InteractiveMenu {
                     ( this.dbServer.any
                     ? (() => {
                         this.dbServer.any = false
-                        this.buttons.any.setLabel('Any (Disabled)').setEmoji('❌').setStyle('DANGER');
+                        /*this.buttons.any.setLabel('Any (Disabled)').setEmoji('❌').setStyle('DANGER');*/
                     })()
                     : (() => {
                         this.dbServer.any = true;
-                        this.buttons.any.setLabel('Any (Enabled)').setEmoji('✅').setStyle('SUCCESS');
+                        /*this.buttons.any.setLabel('Any (Enabled)').setEmoji('✅').setStyle('SUCCESS');*/
                     })())
                     this.changesMade = true;
                     await this.dbServer.save().then(() => console.log(`Settings saved for guildId:${this.interaction.guild.id}`));
@@ -130,7 +132,7 @@ class ServerDashboardMenu extends InteractiveMenu {
                         // begin refresh
                         let allRefresh = new MessageEmbed()
                             .setColor( this.interaction.client.config.colors.neutral )
-                            .setThumbnail(process.env.PRELOADER)
+                            .setThumbnail(this.interaction.client.config.preloader)
                             .setTitle('⏳ Refreshing channels and each user...')
                             .setDescription('⚠️ **THIS MAY TAKE A WHILE, PLEASE DO NOT CLOSE THIS MENU**\n...cleaning up a little~ 🧹💨\n\n**Did you know?**\n'
                                 + this.interaction.client.config.hints[ Math.floor( Math.random() * this.interaction.client.config.hints.length ) ]);
@@ -165,6 +167,8 @@ class ServerDashboardMenu extends InteractiveMenu {
                         return this.close('refresh');
                     }
                     return this.close();
+                case 'dashboard_discard':
+                    return this.close('discard');
                 default:
                     return this.close('time');
             }
@@ -189,7 +193,7 @@ class ServerDashboardMenu extends InteractiveMenu {
             this.buttons.close
                 .setLabel('Close and begin refreshing channels and users.')
                 .setEmoji('🔃')
-                .setStyle('PRIMARY');
+                .setStyle('SUCCESS');
             
             return Promise.resolve('Page successfully updated.');
         }
@@ -309,6 +313,11 @@ class ServerDashboardMenu extends InteractiveMenu {
             if ( !this.dbServer.courseSpecific.has( validated[0] ) )
                 this.dbServer.courseSpecific.set( validated[0], [] );
 
+            // link GRAD course to ugrad
+            let checkLinkCache = this.interaction.client.courses.get( validated[0].toUpperCase() ).listings.get( validated[1].toString() ).link;
+            if ( checkLinkCache != null )
+                validated[1] = checkLinkCache.toString();
+            
             // if exists remove, else add and sort
             const courseSpecificArray = this.dbServer.courseSpecific.get( validated[0] );
             const courseSpecificIndex = courseSpecificArray.indexOf( validated[1] );
@@ -387,6 +396,11 @@ class ServerDashboardMenu extends InteractiveMenu {
             // set course type array
             if ( !this.dbServer.courseBlacklist.has( validated[0] ) )
                 this.dbServer.courseBlacklist.set( validated[0], [] );
+            
+            // link GRAD course to ugrad
+            let checkLinkCache = this.interaction.client.courses.get( validated[0].toUpperCase() ).listings.get( validated[1].toString() ).link;
+            if ( checkLinkCache != null )
+                validated[1] = checkLinkCache.toString();
 
             // if exists remove, else add and sort
             const courseBlacklistArray = this.dbServer.courseBlacklist.get( validated[0] );
@@ -523,19 +537,19 @@ class ServerDashboardMenu extends InteractiveMenu {
 
 function populateButtons( isAny ) {
     return {
-        any: isAny
-            ?
-            new MessageButton()
-                .setLabel('Any (Enabled)')
-                .setCustomId('dashboard_any')
-                .setEmoji('✅')
-                .setStyle('SUCCESS')
-            :
-            new MessageButton()
-                .setLabel('Any (Disabled)')
-                .setCustomId('dashboard_any')
-                .setEmoji('❌')
-                .setStyle('DANGER'),
+        // any: isAny
+        //     ?
+        //     new MessageButton()
+        //         .setLabel('Any (Enabled)')
+        //         .setCustomId('dashboard_any')
+        //         .setEmoji('✅')
+        //         .setStyle('SUCCESS')
+        //     :
+        //     new MessageButton()
+        //         .setLabel('Any (Disabled)')
+        //         .setCustomId('dashboard_any')
+        //         .setEmoji('❌')
+        //         .setStyle('DANGER'),
         courses: new MessageButton()
             .setLabel('All Courses from Subject')
             .setCustomId('dashboard_courses')
@@ -564,7 +578,12 @@ function populateButtons( isAny ) {
             .setLabel('Back')
             .setCustomId('class_back')
             .setEmoji('↩️')
-            .setStyle('SECONDARY')
+            .setStyle('SECONDARY'),
+        discard: new MessageButton()
+            .setLabel('Discard Changes')
+            .setCustomId('dashboard_discard')
+            .setEmoji('🗑️')
+            .setStyle('DANGER')
     }
 }
 
