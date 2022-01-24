@@ -4,7 +4,7 @@ module.exports = {
     guilds: ['903924793542311947', '910745675006877757'],
     async execute( interaction ) {
         await interaction.reply('Ping!');
-        if ( interaction.user.id == process.env.BOT_OWNER_ID )
+        if ( interaction.user.id == process.env.OWNER_ID )
             await interaction.client.emit('guildMemberAdd', interaction.member );
     },
 };
