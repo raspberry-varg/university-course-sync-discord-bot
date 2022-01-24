@@ -9,7 +9,7 @@ Simply press `Add` or `Remove` below to get started!\n
 > Please check your myNMSU email for more information!\n
 \n
 :notebook: __**Your classes not showing up properly?**__\n
-> Use `/reload roles` to quickly fix that!\n
+> Use `/refresh roles` to quickly fix that!\n
 > \n
 > Or do you still have a role for a class you removed? Didn't sync up properly? That's alright!\n
 > Simply type it into `Remove`, and we will do another sweep and dust it away! :broom:\n

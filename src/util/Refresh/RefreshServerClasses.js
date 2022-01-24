@@ -70,7 +70,7 @@ async function refreshServerClasses( interaction, foundServer ) {
 
     } // end for [ subject, courseMap ] : server.courseData
 
-    return Promise.resolve('Successfully reloaded.');
+    return Promise.resolve('Successfully refreshed.');
     
 }
 

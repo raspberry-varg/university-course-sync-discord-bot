@@ -175,7 +175,7 @@ async function refreshUserClasses( interaction, foundUser, foundServer, bypassPr
     else
         console.log('Proxy refresh bypassed.');
     
-    return Promise.resolve('Successfully reloaded.');
+    return Promise.resolve('Successfully refreshed.');
     
 }
 

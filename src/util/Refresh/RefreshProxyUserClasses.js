@@ -156,7 +156,7 @@ async function refreshProxyUserClasses( guildSnowflake, client, foundUser, found
         .then(() => console.log( "SAVED"))
         .catch( e => console.error(e) );
     
-    return Promise.resolve('Successfully reloaded proxy.');
+    return Promise.resolve('Successfully refreshed proxy.');
     
 }
 
