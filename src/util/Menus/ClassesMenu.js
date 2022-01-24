@@ -103,7 +103,7 @@ class ClassesMenu extends InteractiveMenu {
                     .setTitle( MenuContents.addClassPage.title )
                     .setDescription(
                         MenuContents.addClassPage.description.replace(
-                            "<SUPPORTED_CLASSES_URL>", process.env.SUPPORTED_CLASSES_URL
+                            "<SUPPORTED_CLASSES_URL>", this.interaction.client.config.supportedClassesURL
                         ) +
                         MenuContents.crnTooltip
                     ),
@@ -189,7 +189,7 @@ class ClassesMenu extends InteractiveMenu {
                     .setTitle( MenuContents.removeClassPage.title )
                     .setDescription(
                         MenuContents.removeClassPage.description.replace(
-                            "<SUPPORTED_CLASSES_URL>", process.env.SUPPORTED_CLASSES_URL
+                            "<SUPPORTED_CLASSES_URL>", this.interaction.client.config.supportedClassesURL
                         ) +
                         MenuContents.crnTooltip
                     ),
