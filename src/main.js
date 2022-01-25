@@ -4,7 +4,6 @@ process.chdir('./src');
 
 const BotClient = require("./util/BotClient/BotClient");
 const { Intents } = require('discord.js');
-const registerClientCommands = require('./register');
 const dotenv = require('dotenv');
 dotenv.config({ path: '../.env' });
 
@@ -14,10 +13,6 @@ let client = new BotClient({
     partials: ["CHANNEL"]
 });
 require('./database/connect.js')();
-
-registerClientCommands( client )
-    .then( success => console.log( success ) )
-    .catch( error => console.error("Unable to parse client commands. " + error.stack ) );
 
 // login
 client.login( process.env.DISCORD_TOKEN );
