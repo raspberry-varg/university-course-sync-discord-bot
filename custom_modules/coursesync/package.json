@@ -1,0 +1,12 @@
+{
+  "name": "coursesync",
+  "version": "1.0.0",
+  "description": "Custom classes and modules for the Course Sync Discord Bot.",
+  "main": "./src/index.js",
+  "types": "./typings/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Vargas",
+  "license": "ISC"
+}
