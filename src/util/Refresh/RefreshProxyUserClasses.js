@@ -4,7 +4,7 @@ const serverSchema = require('../../database/schemas/server');
 const fetchCourseCategory = require('./fetchCourseCategory');
 const verifyOneCourseTypeSupport = require('../VerifySupport/VerifyOneSubjectSupport');
 const verifyClassSupport = require('../VerifySupport/VerifyOneClassSupport');
-require('coursesync/types/Subject');
+const { BotClient } = require('coursesync');
 
 /**
  * Scan through user's classes and create roles and channels

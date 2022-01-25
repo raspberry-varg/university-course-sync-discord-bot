@@ -1,6 +1,6 @@
 const { Guild } = require('discord.js');
 const serverSchema = require('../../database/schemas/server');
-require('coursesync/types/BotClient');
+const { BotClient } = require('coursesync');
 
 /**
  * Fetch a subject's Discord category channel,

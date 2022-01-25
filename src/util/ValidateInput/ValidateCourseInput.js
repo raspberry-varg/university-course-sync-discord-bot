@@ -1,4 +1,4 @@
-require('coursesync/types/BotClient');
+const { BotClient } = require('coursesync');
 
 /**
  * Validate input to ensure course is valid.

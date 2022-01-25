@@ -1,14 +1,14 @@
-const { Client, Collection, ClientOptions, ApplicationCommandData, Base } = require("discord.js");
+const { Client, Collection, ClientOptions, ApplicationCommandData } = require("discord.js");
 const bindCommands = require("./bindCommands");
 const bindEvents = require("./bindEvents");
 const parseCourses = require("./parseCourses");
-require('coursesync/types/Subject');
+const { SupportedClasses } = require('coursesync');
 
 /**
- * For simplicity, types are defined in /node_modules/coursesync/BotClient/types/BotClient.js
+ * For simplicity, types are defined in /node_modules/coursesync.js
  * by requiring this file in the typedef statement
  * 
- * Types can be required via require('coursesync/types/BotClient') and will be within production.
+ * Types can be required via require('coursesync') and will be within production.
  * Base.client type has been overriden in discord.js/typings/index.d.ts
  */
 class BotClient extends Client {

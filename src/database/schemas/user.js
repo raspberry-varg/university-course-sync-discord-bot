@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose');
-require('coursesync/types/Subject')
+const { SupportedClasses } = require('coursesync')
 
 /**
  * @typedef {{

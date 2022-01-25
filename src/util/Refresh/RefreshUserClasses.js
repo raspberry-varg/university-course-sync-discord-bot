@@ -6,7 +6,7 @@ const fetchCourseCategory = require('./fetchCourseCategory');
 const verifyClassSupport = require('../VerifySupport/VerifyOneClassSupport');
 const verifyOneSubjectSupport = require('../VerifySupport/VerifyOneSubjectSupport');
 const refreshProxyUserClasses = require('./RefreshProxyUserClasses');
-require('coursesync/types/Subject');
+const { Interaction } = require('coursesync');
 
 
 /**

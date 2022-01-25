@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton, MessageEmbed, Interaction } = require('discord.js');
+const { MessageActionRow, MessageButton, MessageEmbed, Interaction, Base } = require('discord.js');
 const InteractiveMenu = require('./InteractiveMenu');
 const validate = require('../ValidateInput/ValidateCourseInput');
 const verifyAllClassesSupport = require('../VerifySupport/VerifyAllClassesSupport');
@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 // const Server = mongoose.model('Server', require('../../database/schemas/server') );
 const MenuContents = require('./contents/ClassesMenu');
 const TIME = 60 * 1000;
-// hello git! :)
+const { BotClient } = require('coursesync');
 
 class ClassesMenu extends InteractiveMenu {
     
