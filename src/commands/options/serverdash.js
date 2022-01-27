@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const serverSchema = require('../../database/schemas/server');
 const { userSchema } = require('../../database/schemas/user');
 const { MessageEmbed, MessageActionRow, MessageButton, Permissions } = require('discord.js');
-const ServerDashboardMenu = require('../../util/menus/ServerDashboardMenu');
+const ServerDashboardMenu = require('../../util/Menus/ServerDashboardMenu');
 
 module.exports = {
     name: 'serverdash',

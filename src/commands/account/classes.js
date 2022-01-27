@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const serverSchema = require('../../database/schemas/server');
 const { userSchema } = require('../../database/schemas/user');
 
-const ClassesMenu = require('../../util/menus/ClassesMenu');
+const ClassesMenu = require('../../util/Menus/ClassesMenu');
 
 module.exports = {
     name: 'classes',
