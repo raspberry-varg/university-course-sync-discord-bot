@@ -4,6 +4,7 @@
   "description": "Prototype bot for NMSU students, and interconnected roles",
   "main": "./src/main.js",
   "scripts": {
+    "run": "node .",
     "test": "echo \"Hello world\"",
     "build": "tsc --build & node .",
     "clean": "tsc --build --clean"
@@ -13,6 +14,7 @@
   "dependencies": {
     "@discordjs/rest": "^0.1.0-canary.0",
     "coursesync": "file:custom_modules/coursesync",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.3.0",
     "dotenv": "^10.0.0",
     "mongoose": "^6.0.12"
